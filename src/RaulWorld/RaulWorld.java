@@ -5,6 +5,7 @@
  */
 package RaulWorld;
 
+import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_concretas.*;
 import java.util.logging.Level;
@@ -24,7 +25,7 @@ public class RaulWorld {
     public static void main(String[] args) {
         try {
             //FactoryProducer FactoryProducer = new FactoryProducer();
-            AbstractFactory factory = CreadorEdificaciones.getFactory("Aviones");
+            AbstractFactory factory = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
             Avion panzer1=factory.crearAvion("Bf109");
             Avion panzer2=factory.crearAvion("Bf109");
             Avion panzer3=factory.crearAvion("Bf109");

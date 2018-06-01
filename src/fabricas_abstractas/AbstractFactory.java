@@ -5,6 +5,7 @@
  */
 package fabricas_abstractas;
 
+import enumeraciones.Edificaciones;
 import productos_abstractos.*;
 
 /**

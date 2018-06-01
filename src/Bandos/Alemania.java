@@ -6,6 +6,7 @@
 package Bandos;
 
 import InterfazBandos.Pais;
+import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_concretas.CreadorEdificaciones;
 
@@ -15,12 +16,13 @@ import fabricas_concretas.CreadorEdificaciones;
  */
 public class Alemania implements Pais{
     int metal, marcoImperial=10000,hormigon;
+    AbstractFactory edificaciones;
+    
     @Override
-    public AbstractFactory crearEdificacion(String tipo) throws Exception {
-        if(marcoImperial>50){   
+    public AbstractFactory crearEdificacion(Edificaciones tipo) throws Exception {
+
         return CreadorEdificaciones.getFactory(tipo);
-        }
-        throw new Exception("");
+
     }
     
     

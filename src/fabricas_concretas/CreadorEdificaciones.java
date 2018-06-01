@@ -5,6 +5,7 @@
  */
 package fabricas_concretas;
 
+import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 
 
@@ -13,20 +14,22 @@ import fabricas_abstractas.AbstractFactory;
  * @author rau3
  */
 public class CreadorEdificaciones {
-    public static AbstractFactory getFactory(String tipo){
+    
+    public static AbstractFactory getFactory(Edificaciones tipo){
         switch(tipo){
-            case "Tanques":
+            case Tanques:
                 return new FabricaTanques();
                 
-            case "Aviones":
+            case Aviones:
                 return new FabricaAviones();
                 
-            case "ImpuestosA":
+            case Impuestos:
                 return new CasaDeImpuestosA();
-            
+            default:
+                return null;
         }
         
-        return null;
+        //return null;
     }
     /*public static AbstractFactory getRecolectores(String tipo){
         switch(tipo){
