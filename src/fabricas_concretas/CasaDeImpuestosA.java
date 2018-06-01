@@ -5,6 +5,8 @@
  */
 package fabricas_concretas;
 
+import enumeraciones.Aviones;
+import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 
 import productos_abstractos.Avion;
@@ -15,20 +17,21 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class CasaDeImpuestosA implements AbstractFactory{
+    int impRecolectados=0;
 
     @Override
-    public Tanque crearTanque(String tipo) throws Exception {
+    public Tanque crearTanque(Tanques tipo) throws Exception {
         return null;
     }
 
     @Override
-    public Avion crearAvion(String tipo) throws Exception {
+    public Avion crearAvion(Aviones tipo) throws Exception {
         return null;
     }
 
     @Override
     public void crearRecursos() {
-        //Aqui se hara la forma de producir recursos por fase
+        this.impRecolectados+=200;
     }
     
 }

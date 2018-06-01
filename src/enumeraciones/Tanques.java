@@ -9,6 +9,6 @@ package enumeraciones;
  *
  * @author rau3
  */
-public enum AvionesA {
-    Stuka,FlugzeugbauAG
+public enum Tanques {
+    KingTiger,TigerI,T34,Kv1
 }

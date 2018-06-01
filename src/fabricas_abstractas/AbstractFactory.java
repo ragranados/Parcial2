@@ -5,7 +5,10 @@
  */
 package fabricas_abstractas;
 
-import enumeraciones.Edificaciones;
+
+
+import enumeraciones.Aviones;
+import enumeraciones.Tanques;
 import productos_abstractos.*;
 
 /**
@@ -13,8 +16,8 @@ import productos_abstractos.*;
  * @author rau3
  */
 public interface AbstractFactory {
-    Tanque crearTanque(String tipo) throws Exception;
-    Avion crearAvion(String tipo) throws Exception;
+    Tanque crearTanque(Tanques tipo) throws Exception;
+    Avion crearAvion(Aviones tipo) throws Exception;
     void crearRecursos();
     
     

@@ -5,6 +5,8 @@
  */
 package fabricas_concretas;
 
+import enumeraciones.Aviones;
+import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
@@ -13,15 +15,15 @@ import productos_abstractos.Tanque;
  *
  * @author rau3
  */
-public class MinaMetalA implements AbstractFactory{
+public class MinaMetal implements AbstractFactory{
 
     @Override
-    public Tanque crearTanque(String tipo) throws Exception {
+    public Tanque crearTanque(Tanques tipo) throws Exception {
         return null;
     }
 
     @Override
-    public Avion crearAvion(String tipo) throws Exception {
+    public Avion crearAvion(Aviones tipo) throws Exception {
         return null;
     }
 

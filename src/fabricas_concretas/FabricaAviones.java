@@ -5,6 +5,8 @@
  */
 package fabricas_concretas;
 
+import enumeraciones.Aviones;
+import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 
 import java.util.ArrayList;
@@ -21,21 +23,29 @@ public class FabricaAviones implements AbstractFactory {
     private ArrayList<Avion> hangar = new ArrayList();
 
     @Override
-    public Tanque crearTanque(String tipo) {
+    public Tanque crearTanque(Tanques tipo) {
         return null;
     }
 
     @Override
-    public Avion crearAvion(String tipo) throws Exception {
+    public Avion crearAvion(Aviones tipo) throws Exception {
         Avion nuevo;
         if (this.hangar.size() < 10) {
             switch (tipo) {
-                case "AG":
+                case FlugzeugbauAG:
                     nuevo = new FlugzeugbauAG();
                     this.hangar.add(nuevo);
                     return nuevo;
-                case "Stuka":
+                case Stuka:
                     nuevo = new Stuka();
+                    this.hangar.add(nuevo);
+                    return nuevo;
+                case Tu22M:
+                    nuevo = new Tu22M();
+                    this.hangar.add(nuevo);
+                    return nuevo;
+                case Tu95:
+                    nuevo = new Tu95();
                     this.hangar.add(nuevo);
                     return nuevo;
             }

@@ -15,7 +15,8 @@ import fabricas_concretas.CreadorEdificaciones;
  * @author rau3
  */
 public class Alemania implements Pais{
-    int metal, marcoImperial=10000,hormigon;
+    int metal=3000, marcoImperial=10000,hormigon=5000;
+    int maxMetal,macMarcoImperial,maxHormigon;
     AbstractFactory edificaciones;
     
     @Override
