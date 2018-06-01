@@ -5,22 +5,30 @@
  */
 package fabricas_concretas;
 
-import fabricas_abstractas.Recursos;
+import fabricas_abstractas.AbstractFactory;
+
+import productos_abstractos.Avion;
+import productos_abstractos.Tanque;
 
 /**
  *
  * @author rau3
  */
-public class CasaDeImpuestosA implements Recursos{
+public class CasaDeImpuestosA implements AbstractFactory{
 
     @Override
-    public void producirRecurso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Tanque crearTanque(String tipo) throws Exception {
+        return null;
     }
 
     @Override
-    public void destruit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Avion crearAvion(String tipo) throws Exception {
+        return null;
+    }
+
+    @Override
+    public void crearRecursos() {
+        //Aqui se hara la forma de producir recursos por fase
     }
     
 }

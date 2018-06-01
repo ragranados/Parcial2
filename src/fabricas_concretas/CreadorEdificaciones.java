@@ -6,7 +6,7 @@
 package fabricas_concretas;
 
 import fabricas_abstractas.AbstractFactory;
-import fabricas_abstractas.Recursos;
+
 
 /**
  *
@@ -20,17 +20,20 @@ public class CreadorEdificaciones {
                 
             case "Aviones":
                 return new FabricaAviones();
+                
+            case "ImpuestosA":
+                return new CasaDeImpuestosA();
             
         }
         
         return null;
     }
-    public static Recursos getRecolectores(String tipo){
+    /*public static AbstractFactory getRecolectores(String tipo){
         switch(tipo){
         case "ImpuestosA":
                 return new CasaDeImpuestosA();
         }
         return null;
-    }
+    }*/
     
 }

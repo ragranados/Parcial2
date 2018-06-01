@@ -21,12 +21,12 @@ public class FabricaAviones implements AbstractFactory {
     private ArrayList<Avion> hangar = new ArrayList();
 
     @Override
-    public Tanque CreatePazer(String tipo) {
+    public Tanque crearTanque(String tipo) {
         return null;
     }
 
     @Override
-    public Avion CreateFlugzeug(String tipo) throws Exception {
+    public Avion crearAvion(String tipo) throws Exception {
         Avion nuevo;
         if (this.hangar.size() < 10) {
             switch (tipo) {
@@ -46,5 +46,12 @@ public class FabricaAviones implements AbstractFactory {
     public ArrayList<Avion> getHangar() {
         return hangar;
     }
+
+    @Override
+    public void crearRecursos() {
+        
+    }
+
+   
     
 }

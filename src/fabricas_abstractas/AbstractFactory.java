@@ -12,8 +12,9 @@ import productos_abstractos.*;
  * @author rau3
  */
 public interface AbstractFactory {
-    Tanque CreatePazer(String tipo) throws Exception;
-    Avion CreateFlugzeug(String tipo) throws Exception;
+    Tanque crearTanque(String tipo) throws Exception;
+    Avion crearAvion(String tipo) throws Exception;
+    void crearRecursos();
     
     
 }
