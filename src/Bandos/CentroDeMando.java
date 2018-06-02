@@ -5,29 +5,22 @@
  */
 package Bandos;
 
-/*import InterfazBandos.Pais;
 import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_concretas.CreadorEdificaciones;
-import java.util.ArrayList;*/
+import java.util.ArrayList;
 
 /**
  *
  * @author rau3
  */
-public class Alemania extends CentroDeMando{
-
-    public Alemania(String comandante) {
-        super(comandante);
-    }
-    
-    
-    /*int metal, moneda,hormigon,vida;
+public class CentroDeMando {
+    int metal, moneda,hormigon,vida;
     int maxMetal,maxMoneda,maxHormigon;
-    String comandante;
     ArrayList<AbstractFactory> edificaciones = new ArrayList();
+    String comandante;
 
-    public Alemania(String comandante) {
+    public CentroDeMando(String comandante) {
         this.moneda=1000;
         this.hormigon=500;
         this.metal=300;
@@ -39,13 +32,11 @@ public class Alemania extends CentroDeMando{
     }
     
     
-    
-    @Override
     public AbstractFactory crearEdificacion(Edificaciones tipo) throws Exception {
         AbstractFactory nuevo = CreadorEdificaciones.getFactory(tipo);
         this.edificaciones.add(nuevo);
         return nuevo;
-
+        
     }
 
     public int getMetal() {
@@ -56,12 +47,12 @@ public class Alemania extends CentroDeMando{
         this.metal = metal;
     }
 
-    public int getMarcoImperial() {
+    public int getDolares() {
         return moneda;
     }
 
-    public void setMarcoImperial(int marcoImperial) {
-        this.moneda = marcoImperial;
+    public void setDolares(int dolares) {
+        this.moneda = dolares;
     }
 
     public int getHormigon() {
@@ -88,12 +79,12 @@ public class Alemania extends CentroDeMando{
         this.maxMetal = maxMetal;
     }
 
-    public int getMaxMarcoImperial() {
+    public int getMaxDolares() {
         return maxMoneda;
     }
 
-    public void setMaxMarcoImperial(int maxMarcoImperial) {
-        this.maxMoneda = maxMarcoImperial;
+    public void setMaxDolares(int maxDolares) {
+        this.maxMoneda = maxDolares;
     }
 
     public int getMaxHormigon() {
@@ -104,6 +95,14 @@ public class Alemania extends CentroDeMando{
         this.maxHormigon = maxHormigon;
     }
 
+    public ArrayList<AbstractFactory> getEdificaciones() {
+        return edificaciones;
+    }
+
+    public void setEdificaciones(ArrayList<AbstractFactory> edificaciones) {
+        this.edificaciones = edificaciones;
+    }
+
     public String getComandante() {
         return comandante;
     }
@@ -111,16 +110,5 @@ public class Alemania extends CentroDeMando{
     public void setComandante(String comandante) {
         this.comandante = comandante;
     }
-
-    public ArrayList<AbstractFactory> getEdificaciones() {
-        return edificaciones;
-    }
-
-    public void setEdificaciones(ArrayList<AbstractFactory> edificaciones) {
-        this.edificaciones = edificaciones;
-    }*/
-    
-    
-    
     
 }

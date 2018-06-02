@@ -22,6 +22,7 @@ public class CreadorEdificaciones {
                 
             case Aviones:
                 return new FabricaAviones();
+            case Cuartel:
                 
             case Impuestos:
                 return new CasaDeImpuestosA();

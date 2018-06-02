@@ -17,7 +17,7 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class CasaDeImpuestosA implements AbstractFactory{
-    int impRecolectados=0;
+    int impRecolectados=0,produccion;
 
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
@@ -31,7 +31,26 @@ public class CasaDeImpuestosA implements AbstractFactory{
 
     @Override
     public void crearRecursos() {
-        this.impRecolectados+=200;
+        this.impRecolectados+=produccion;
     }
+
+    public int getImpRecolectados() {
+        return impRecolectados;
+    }
+
+    public void setImpRecolectados(int impRecolectados) {
+        this.impRecolectados = impRecolectados;
+    }
+
+    public int getProduccion() {
+        return produccion;
+    }
+
+    public void setProduccion(int produccion) {
+        this.produccion = produccion;
+    }
+    
+    
+    
     
 }

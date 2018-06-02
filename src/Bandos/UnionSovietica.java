@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enumeraciones;
+package Bandos;
 
 /**
  *
  * @author rau3
  */
-public enum Edificaciones {
-    Tanques,Aviones,Impuestos,Cuartel
+public class UnionSovietica extends CentroDeMando{
+    
+    public UnionSovietica(String comandante) {
+        super(comandante);
+    }
+    
 }

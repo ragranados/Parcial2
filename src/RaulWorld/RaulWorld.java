@@ -25,7 +25,7 @@ public class RaulWorld {
     public static void main(String[] args) {
         try {
             //FactoryProducer FactoryProducer = new FactoryProducer();
-            AbstractFactory factory = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
+            /*AbstractFactory factory = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
             Avion panzer1=factory.crearAvion("Bf109");
             Avion panzer2=factory.crearAvion("Bf109");
             Avion panzer3=factory.crearAvion("Bf109");
@@ -37,8 +37,9 @@ public class RaulWorld {
             Avion panzer9=factory.crearAvion("Bf109");
             Avion panzer10=factory.crearAvion("Bf109");
             Avion panzer11=factory.crearAvion("Bf109");
-            Avion panzer12=factory.crearAvion("Bf109");
-            
+            Avion panzer12=factory.crearAvion("Bf109");*/
+            Menu menu = Menu.getInstance();
+            menu.elegirBandos();
             
             //panzer1.atacar();
         } catch (Exception ex) {
