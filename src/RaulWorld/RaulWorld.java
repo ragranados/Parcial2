@@ -39,7 +39,7 @@ public class RaulWorld {
             Avion panzer11=factory.crearAvion("Bf109");
             Avion panzer12=factory.crearAvion("Bf109");*/
             Menu menu = Menu.getInstance();
-            menu.elegirBandos();
+            menu.jugar();
             
             //panzer1.atacar();
         } catch (Exception ex) {

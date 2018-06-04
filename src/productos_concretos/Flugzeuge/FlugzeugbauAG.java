@@ -12,7 +12,42 @@ import productos_abstractos.Avion;
  * @author rau3
  */
 public class FlugzeugbauAG implements Avion{
+    
+    private int espera,velocidad;
+    private int danio, vida;
+    private final static int cosMetal=500,cosMoneda=1500;
 
+    public FlugzeugbauAG() {
+        velocidad=1;
+        espera = 1;
+        this.danio = 200 ;
+        this.vida = 150;
+    }
+
+    public int getEspera() {
+        return espera;
+    }
+
+    public int getDanio() {
+        return danio;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public static int getCosMetal() {
+        return cosMetal;
+    }
+
+    public static int getCosMoneda() {
+        return cosMoneda;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
     @Override
     public void despegar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

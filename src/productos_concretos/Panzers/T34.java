@@ -12,6 +12,18 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class T34 implements Tanque{
+    
+    private final int espera,velocidad;
+    private int danio, vida;
+    private final static int cosMetal=300,cosMoneda=700;
+
+    public T34() {
+        this.espera = 1;
+        this.velocidad = 2;
+        this.danio = 300;
+        this.vida = 600;
+    }
+    
 
     @Override
     public void atacar() {

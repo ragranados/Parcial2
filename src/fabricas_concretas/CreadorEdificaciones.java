@@ -15,9 +15,10 @@ import fabricas_abstractas.AbstractFactory;
  */
 public class CreadorEdificaciones {
     
-    public static AbstractFactory getFactory(Edificaciones tipo){
+    public static AbstractFactory getFactory(Edificaciones tipo) throws Exception{
         switch(tipo){
             case Tanques:
+                
                 return new FabricaTanques();
                 
             case Aviones:

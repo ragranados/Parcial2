@@ -6,6 +6,7 @@
 package fabricas_concretas;
 
 import enumeraciones.Aviones;
+import enumeraciones.Edificaciones;
 import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 import java.util.ArrayList;
@@ -18,28 +19,36 @@ import productos_abstractos.Avion;
  * @author rau3
  */
 public class FabricaTanques implements AbstractFactory{
-    private ArrayList<Tanque> hangarPanzers = new ArrayList();
+    
+    private ArrayList<Tanque> hangarTanques ;
+    Edificaciones tipo;
+
+    public FabricaTanques() {
+        this.hangarTanques=new ArrayList();
+        this.tipo = Edificaciones.Tanques;
+    }
+    
 
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
         Tanque nuevo;
-        if (hangarPanzers.size() < 10) {
+        if (hangarTanques.size() < 10) {
             switch (tipo) {
                 case KingTiger:
                     nuevo = new KingTiger();
-                    this.hangarPanzers.add(nuevo);
+                    this.hangarTanques.add(nuevo);
                     return nuevo;
                 case TigerI:
                     nuevo = new TigerI();
-                    this.hangarPanzers.add(nuevo);
+                    this.hangarTanques.add(nuevo);
                     return nuevo;
                 case Kv1:
                     nuevo = new Kv1();
-                    this.hangarPanzers.add(nuevo);
+                    this.hangarTanques.add(nuevo);
                     return nuevo;
                 case T34:
                     nuevo = new T34();
-                    this.hangarPanzers.add(nuevo);
+                    this.hangarTanques.add(nuevo);
                     return nuevo;
             }
         }

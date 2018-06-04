@@ -12,6 +12,18 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class TigerI implements Tanque{
+    
+    private final int espera,velocidad;
+    private int danio, vida;
+    private final static int cosMetal=200,cosMoneda=1000;
+
+    public TigerI() {
+        this.espera = 2;
+        this.velocidad = 2;
+        this.danio = 300;
+        this.vida = 600;
+    }
+    
 
     @Override
     public void atacar() {

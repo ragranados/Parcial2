@@ -12,6 +12,18 @@ import productos_abstractos.Avion;
  * @author rau3
  */
 public class Tu95 implements Avion{
+    
+    private int espera,velocidad;
+    private int danio, vida;
+    private static int cosMetal=350,cosMoneda=1000;
+
+    public Tu95() {
+        this.velocidad=1;
+        this.espera=1;
+        this.danio = 150;
+        this.vida = 280;
+    }
+    
 
     @Override
     public void despegar() {

@@ -6,6 +6,7 @@
 package fabricas_concretas;
 
 import enumeraciones.Aviones;
+import enumeraciones.Edificaciones;
 import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 
@@ -19,8 +20,16 @@ import productos_abstractos.Avion;
  * @author rau3
  */
 public class FabricaAviones implements AbstractFactory {
+    
 
-    private ArrayList<Avion> hangar = new ArrayList();
+    private ArrayList<Avion> hangar ;
+    Edificaciones tipo ;
+
+    public FabricaAviones() {
+        this.hangar= new ArrayList();
+        this.tipo = Edificaciones.Aviones;
+    }
+    
 
     @Override
     public Tanque crearTanque(Tanques tipo) {

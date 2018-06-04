@@ -12,6 +12,19 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class Kv1 implements Tanque{
+    
+    private final int espera,velocidad;
+    private int danio, vida;
+    private final static int cosMetal=600,cosMoneda=1500;
+
+    public Kv1() {
+        this.espera = 2;
+        this.velocidad = 2;
+        this.danio = 400;
+        this.vida = 800;
+    }
+    
+    
 
     @Override
     public void atacar() {

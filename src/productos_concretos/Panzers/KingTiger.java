@@ -12,8 +12,21 @@ import productos_abstractos.Tanque;
  * @author rau3
  */
 public class KingTiger implements Tanque {
-    public void atacar(){
-            System.out.println("atacando");
+    
+    private final int espera,velocidad;
+    private int danio, vida;
+    private final static int cosMetal=700,cosMoneda=3000;
+
+    public KingTiger() {
+        this.espera=2;
+        this.velocidad=3;
+        this.danio = 500;
+        this.vida = 800;
+    }
+    
+    
+    public void atacar() {
+        System.out.println("atacando");
     }
 
     @Override

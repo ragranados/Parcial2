@@ -5,6 +5,10 @@
  */
 package Bandos;
 
+import enumeraciones.Edificaciones;
+import fabricas_abstractas.AbstractFactory;
+import fabricas_concretas.CreadorEdificaciones;
+
 /*import InterfazBandos.Pais;
 import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
@@ -19,6 +23,15 @@ public class Alemania extends CentroDeMando{
 
     public Alemania(String comandante) {
         super(comandante);
+    }
+    
+    @Override
+    public AbstractFactory crearEdificacion(Edificaciones tipo) throws Exception {
+        
+        AbstractFactory nuevo = CreadorEdificaciones.getFactory(tipo);
+        this.edificaciones.add(nuevo);
+        return nuevo;
+        
     }
     
     

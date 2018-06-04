@@ -5,12 +5,6 @@
  */
 package Bandos;
 
-
-/*import enumeraciones.Edificaciones;
-import fabricas_abstractas.AbstractFactory;
-import fabricas_concretas.CreadorEdificaciones;
-import java.util.ArrayList;*/
-
 /**
  *
  * @author rau3

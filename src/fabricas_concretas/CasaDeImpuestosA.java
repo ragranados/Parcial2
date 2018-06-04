@@ -18,6 +18,7 @@ import productos_abstractos.Tanque;
  */
 public class CasaDeImpuestosA implements AbstractFactory{
     int impRecolectados=0,produccion;
+    int construccion;
 
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
