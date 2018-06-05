@@ -7,6 +7,7 @@ package fabricas_concretas;
 
 import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
+import java.util.Scanner;
 
 
 /**
@@ -14,7 +15,7 @@ import fabricas_abstractas.AbstractFactory;
  * @author rau3
  */
 public class CreadorEdificaciones {
-    
+    Scanner scanner = new Scanner(System.in);
     public static AbstractFactory getFactory(Edificaciones tipo) throws Exception{
         switch(tipo){
             case Tanques:
@@ -23,10 +24,11 @@ public class CreadorEdificaciones {
                 
             case Aviones:
                 return new FabricaAviones();
-            case Cuartel:
-                
+            case Academia:
+                return new Academia();
             case Impuestos:
                 return new CasaDeImpuestosA();
+                
             default:
                 return null;
         }

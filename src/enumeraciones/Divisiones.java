@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productos_abstractos;
+package enumeraciones;
 
 /**
  *
  * @author rau3
  */
-public interface Soldado {
-    
+public enum Divisiones {
+    Infanteria,SS,USMarines,SoldadosUS,SoldadosR,ComandantesR
     
 }

@@ -10,5 +10,5 @@ package enumeraciones;
  * @author rau3
  */
 public enum Edificaciones {
-    Tanques,Aviones,Impuestos,Cuartel
+    Tanques,Aviones,Impuestos,Academia,MinaMetal,procesadora
 }

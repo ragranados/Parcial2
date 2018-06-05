@@ -5,12 +5,14 @@
  */
 package RaulWorld;
 
+import enumeraciones.Aviones;
 import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_concretas.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import productos_abstractos.*;
+import productos_concretos.Flugzeuge.Stuka;
 
 
 /**
@@ -23,28 +25,34 @@ public class RaulWorld {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+        /*try {
             //FactoryProducer FactoryProducer = new FactoryProducer();
-            /*AbstractFactory factory = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
-            Avion panzer1=factory.crearAvion("Bf109");
-            Avion panzer2=factory.crearAvion("Bf109");
-            Avion panzer3=factory.crearAvion("Bf109");
-            Avion panzer4=factory.crearAvion("Bf109");
-            Avion panzer5=factory.crearAvion("Bf109");
-            Avion panzer6=factory.crearAvion("Bf109");
-            Avion panzer7=factory.crearAvion("Bf109");
-            Avion panzer8=factory.crearAvion("Bf109");
-            Avion panzer9=factory.crearAvion("Bf109");
-            Avion panzer10=factory.crearAvion("Bf109");
-            Avion panzer11=factory.crearAvion("Bf109");
-            Avion panzer12=factory.crearAvion("Bf109");*/
-            Menu menu = Menu.getInstance();
-            menu.jugar();
+            AbstractFactory factory = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
+            Avion panzer1=factory.crearAvion(Aviones.Stuka);
+            Avion panzer2=factory.crearAvion(Aviones.Stuka);
+            Avion panzer3=factory.crearAvion(Aviones.Stuka);
+            Avion panzer4=factory.crearAvion(Aviones.Stuka);
+            Avion panzer5=factory.crearAvion(Aviones.Stuka);
+            Avion panzer6=factory.crearAvion(Aviones.Stuka);
+            Avion panzer7=factory.crearAvion(Aviones.Stuka);
+            Avion panzer8=factory.crearAvion(Aviones.Stuka);
+            Avion panzer9=factory.crearAvion(Aviones.Stuka);
+            Avion panzer10=factory.crearAvion(Aviones.Stuka);
+            System.out.println("Holaaaaaaa");
+            Avion panzer11=factory.crearAvion(Aviones.Stuka);
+            Avion panzer12=factory.crearAvion(Aviones.Stuka);
+            
+            
             
             //panzer1.atacar();
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-        }
+        }*/
+        
+        Menu menu = Menu.getInstance();
+            menu.jugar();
+        System.out.println("Precio Stuka: "+Stuka.getCosMetal());
+        
     }
     
 }

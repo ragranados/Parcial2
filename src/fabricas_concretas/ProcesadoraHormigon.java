@@ -5,29 +5,41 @@
  */
 package fabricas_concretas;
 
-import enumeraciones.*;
+import enumeraciones.Aviones;
+import enumeraciones.Divisiones;
+import enumeraciones.Edificaciones;
+import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 import productos_abstractos.Avion;
-import productos_abstractos.Tanque;
 import productos_abstractos.Division;
+import productos_abstractos.Tanque;
 
 /**
  *
  * @author rau3
  */
-public class MinaMetal implements AbstractFactory{
-    private int metalRecolectado,produccion;
+public class ProcesadoraHormigon implements AbstractFactory{
+    private int hormigonFabricado,produccion;
     private static int costHormigon,costMonedas;
     private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
-
-    public MinaMetal() {
-        this.metalRecolectado=0;
-        
-    }
     
     @Override
     public void crearRecursos(int a) {
-        metalRecolectado += produccion;
+        this.hormigonFabricado+=produccion;
+        
+    }
+
+    public int getHormigonFabricado() {
+        return hormigonFabricado;
+    }
+
+    public int getProduccion() {
+        return produccion;
+    }
+    
+    @Override
+    public void setProduccion(int p) {
+        
     }
 
     public static int getCostHormigon() {
@@ -41,12 +53,8 @@ public class MinaMetal implements AbstractFactory{
     public static Edificaciones getTipoEdificacion() {
         return tipoEdificacion;
     }
-
-    @Override
-    public void setProduccion(int produccion) {
-        this.produccion = produccion;
-    }
     
+
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
         return null;
@@ -56,12 +64,9 @@ public class MinaMetal implements AbstractFactory{
     public Avion crearAvion(Aviones tipo) throws Exception {
         return null;
     }
-    
+
     @Override
-    public Division entrenarSoldados(Divisiones tipo) {
+    public Division entrenarSoldados(Divisiones tipo) throws Exception {
         return null;
     }
-
-    
-    
 }

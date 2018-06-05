@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RaulWorld;
-
-import Bandos.CentroDeMando;
-import java.util.ArrayList;
+package fabricas_abstractas;
 
 /**
  *
  * @author rau3
  */
-public class MenuAlemania {
-    
-    private ArrayList<CentroDeMando> bandos;
+public interface Recursos {
+    void crearRecursos(int a);
     
 }

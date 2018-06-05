@@ -5,33 +5,42 @@
  */
 package fabricas_concretas;
 
-import enumeraciones.Aviones;
-import enumeraciones.Tanques;
+import enumeraciones.*;
 import fabricas_abstractas.AbstractFactory;
+import fabricas_abstractas.Recursos;
 
 import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
+import productos_abstractos.Division;
 
 /**
  *
  * @author rau3
  */
 public class CasaDeImpuestosA implements AbstractFactory{
-    int impRecolectados=0,produccion;
-    int construccion;
+    private int impRecolectados=0,produccion;
+    private static int costHormigon=1000,costMonedas=5050;
+    private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
 
-    @Override
-    public Tanque crearTanque(Tanques tipo) throws Exception {
-        return null;
+    public CasaDeImpuestosA() {
+        
+    }
+    
+
+    public static int getCostHormigon() {
+        return costHormigon;
+    }
+
+    public static int getCostMonedas() {
+        return costMonedas;
+    }
+
+    public Edificaciones getTipoEdificacion() {
+        return tipoEdificacion;
     }
 
     @Override
-    public Avion crearAvion(Aviones tipo) throws Exception {
-        return null;
-    }
-
-    @Override
-    public void crearRecursos() {
+    public void crearRecursos(int a) {
         this.impRecolectados+=produccion;
     }
 
@@ -46,11 +55,25 @@ public class CasaDeImpuestosA implements AbstractFactory{
     public int getProduccion() {
         return produccion;
     }
-
+    @Override
     public void setProduccion(int produccion) {
         this.produccion = produccion;
     }
+
+    @Override
+    public Division entrenarSoldados(Divisiones tipo) {
+        return null;
+    }
     
+    @Override
+    public Tanque crearTanque(Tanques tipo) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Avion crearAvion(Aviones tipo) throws Exception {
+        return null;
+    }
     
     
     

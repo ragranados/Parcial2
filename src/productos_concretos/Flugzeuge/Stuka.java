@@ -23,6 +23,34 @@ public class Stuka implements Avion{
         this.danio=350;
         vida=300;
     }
+
+    public int getEspera() {
+        return espera;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public int getDanio() {
+        return danio;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public static int getCosMetal() {
+        return cosMetal;
+    }
+
+    public static int getCosMoneda() {
+        return cosMoneda;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
     
     
 

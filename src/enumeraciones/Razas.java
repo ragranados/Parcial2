@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productos_concretos.Soldados;
-
-import productos_abstractos.Soldado;
+package enumeraciones;
 
 /**
  *
  * @author rau3
  */
-public class Soldat implements Soldado{
+public enum Razas {
+    Alemania,UnionSovietica,EstadosUnidos
     
 }

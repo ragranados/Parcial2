@@ -5,15 +5,20 @@
  */
 package fabricas_concretas;
 
-import enumeraciones.Aviones;
-import enumeraciones.Edificaciones;
-import enumeraciones.Tanques;
+import enumeraciones.*;;
 import fabricas_abstractas.AbstractFactory;
 
 import java.util.ArrayList;
 import productos_concretos.Flugzeuge.*;
 import productos_abstractos.Tanque;
 import productos_abstractos.Avion;
+import productos_abstractos.Division;import fabricas_abstractas.AbstractFactory;
+
+import java.util.ArrayList;
+import productos_concretos.Flugzeuge.*;
+import productos_abstractos.Tanque;
+import productos_abstractos.Avion;
+
 
 /**
  *
@@ -21,19 +26,26 @@ import productos_abstractos.Avion;
  */
 public class FabricaAviones implements AbstractFactory {
     
-
+    private static int costHormigon=1100,costMonedas=1400;
     private ArrayList<Avion> hangar ;
-    Edificaciones tipo ;
+    private Edificaciones tipoEdificacion ;
 
     public FabricaAviones() {
         this.hangar= new ArrayList();
-        this.tipo = Edificaciones.Aviones;
+        this.tipoEdificacion = Edificaciones.Aviones;
+    }
+
+    public static int getCostHormigon() {
+        return costHormigon;
+    }
+
+    public static int getCostMonedas() {
+        return costMonedas;
     }
     
 
-    @Override
-    public Tanque crearTanque(Tanques tipo) {
-        return null;
+    public Edificaciones getTipoEdificacion() {
+        return tipoEdificacion;
     }
 
     @Override
@@ -67,10 +79,23 @@ public class FabricaAviones implements AbstractFactory {
     }
 
     @Override
-    public void crearRecursos() {
+    public void crearRecursos(int a) {
         
     }
 
-   
+    @Override
+    public void setProduccion(int p) {
+        
+    }
+
+   @Override
+    public Tanque crearTanque(Tanques tipo) {
+        return null;
+    }
+
+    @Override
+    public Division entrenarSoldados(Divisiones tipo) {
+        return null;
+    }
     
 }

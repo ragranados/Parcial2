@@ -5,6 +5,8 @@
  */
 package Bandos;
 
+import enumeraciones.Razas;
+
 /**
  *
  * @author rau3
@@ -13,6 +15,7 @@ public class UnionSovietica extends CentroDeMando{
     
     public UnionSovietica(String comandante) {
         super(comandante);
+        this.nombre=Razas.UnionSovietica;
     }
     
 }
