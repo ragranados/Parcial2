@@ -23,7 +23,14 @@ public class T34 implements Tanque{
         this.danio = 300;
         this.vida = 600;
     }
-    
+
+    public static int getCosMetal() {
+        return cosMetal;
+    }
+
+    public static int getCosMoneda() {
+        return cosMoneda;
+    }
 
     @Override
     public void atacar() {

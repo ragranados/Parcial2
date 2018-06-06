@@ -5,8 +5,10 @@
  */
 package Bandos;
 
+import enumeraciones.Aviones;
 import enumeraciones.Edificaciones;
 import enumeraciones.Razas;
+import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_concretas.Academia;
 import fabricas_concretas.CasaDeImpuestosA;
@@ -17,6 +19,11 @@ import fabricas_concretas.MinaMetal;
 import fabricas_concretas.ProcesadoraHormigon;
 import java.util.ArrayList;
 import java.util.Scanner;
+import productos_concretos.Flugzeuge.Stuka;
+import productos_concretos.Flugzeuge.Tu95;
+import productos_concretos.Panzers.T34;
+import productos_concretos.Panzers.TigerI;
+import fabricas_abstractas.Fabrica;
 
 /**
  *
@@ -43,7 +50,7 @@ public class CentroDeMando {
     
     public AbstractFactory crearEdificacion() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        AbstractFactory nuevaEdif = null;
+        AbstractFactory nuevaEdif;
         boolean eleccion = true;
         int edificacion;
         while (eleccion) {
@@ -65,7 +72,7 @@ public class CentroDeMando {
                         
                         break;
                     case 2:
-                        if (FabricaAviones.getCostMonedas() <= this.maxMoneda && FabricaAviones.getCostHormigon() <= this.hormigon) {
+                        if (FabricaAviones.getCostMonedas() <= this.moneda && FabricaAviones.getCostHormigon() <= this.hormigon) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
                             this.hormigon-=FabricaAviones.getCostHormigon();
                             this.moneda-=FabricaAviones.getCostMonedas();
@@ -148,6 +155,7 @@ public class CentroDeMando {
                         break;
                     case 7:
                         eleccion=false;
+                    
 
                 }
                 if (nuevaEdif == null) {
@@ -161,6 +169,88 @@ public class CentroDeMando {
             }
         }
         return null;
+    }
+    
+    public void mostrarRecursos(){
+        System.out.println("\nMonedas: "+this.moneda+"|"+"Metal: "+this.metal+"|"+"Hormigon: "+this.hormigon);
+    }
+    
+    public boolean getVehiculo(Edificaciones tip) throws Exception {
+        Fabrica edif;
+
+        for (AbstractFactory f : this.fabricas) {
+            edif = (Fabrica) f;
+            if (edif.getHangerSize() <= 10) {
+                if (tip == edif.getTipoEdificacion()) {
+                    if (tip == Edificaciones.Tanques) {
+                        if (this.nombre == Razas.Alemania) {
+                            if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
+                                f.crearTanque(Tanques.TigerI);
+                                this.moneda -= TigerI.getCosMoneda();
+                                this.metal -= TigerI.getCosMetal();
+                                return true;
+                            }
+                        } else if (this.nombre == Razas.UnionSovietica) {
+                            if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
+                                f.crearTanque(Tanques.T34);
+                                this.moneda -= T34.getCosMoneda();
+                                this.metal -= T34.getCosMetal();
+                                return true;
+                            }
+                        }
+                    }
+                    if (tip == Edificaciones.Aviones) {
+                        if (this.nombre == Razas.Alemania) {
+                            if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
+                                f.crearAvion(Aviones.Stuka);
+                                this.moneda -= Stuka.getCosMoneda();
+                                this.metal -= Stuka.getCosMetal();
+                                return true;
+                            }
+                        } else if (this.nombre == Razas.UnionSovietica) {
+                            if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
+                                f.crearAvion(Aviones.Tu95);
+                                this.moneda = Tu95.getCosMoneda();
+                                this.metal = Tu95.getCosMetal();
+                                return true;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        throw new Exception("No hay fabricas disponibles");
+    }
+    
+    public boolean crearVehiculos() {
+        boolean eleccion = true;
+        int opc;
+        Edificaciones tip = null;
+        while (eleccion) {
+        mostrarRecursos();
+            try {
+                System.out.println("\n1. Tanques\n2. Aviones\n3. Salir");
+                Scanner scanner = new Scanner(System.in);
+                opc = scanner.nextInt();
+                switch (opc) {
+                    case 1:
+                        tip = Edificaciones.Tanques;
+                        break;
+                    case 2:
+                        tip = Edificaciones.Aviones;
+                        break;
+                    case 3:
+                        return true;
+                }
+                getVehiculo(tip);
+                System.out.println("Se ha creado un vehiculo");
+                
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        return true;
     }
 
     public int getMetal() {

@@ -8,16 +8,18 @@ package fabricas_concretas;
 import enumeraciones.*;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_abstractas.Recursos;
+import java.util.ArrayList;
 
 import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
+import fabricas_abstractas.Fabrica;
 
 /**
  *
  * @author rau3
  */
-public class CasaDeImpuestosA implements AbstractFactory{
+public class CasaDeImpuestosA implements AbstractFactory,Recursos{
     private int impRecolectados=0,produccion;
     private static int costHormigon=1000,costMonedas=5050;
     private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;

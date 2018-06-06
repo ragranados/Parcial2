@@ -11,16 +11,17 @@ import fabricas_abstractas.AbstractFactory;
 import java.util.ArrayList;
 import productos_abstractos.*;
 import productos_concretos.Soldados.*;
+import fabricas_abstractas.Fabrica;
 
 
 /**
  *
  * @author rau3
  */
-public class Academia implements AbstractFactory {
+public class Academia implements AbstractFactory,Fabrica {
 
     private ArrayList<Division> cuartel;
-    private static Edificaciones tipoEdificacion = Edificaciones.Academia;
+    private Edificaciones tipoEdificacion = Edificaciones.Academia;
     private static int costHormigon = 1400, costMonedas = 4000;
 
     public Academia() {
@@ -54,12 +55,18 @@ public class Academia implements AbstractFactory {
         }
         throw new Exception("Academia llena");
     }
+    
+    @Override
+    public int getHangerSize() {
+        return this.cuartel.size();
+    }
 
     public ArrayList<Division> getCuartel() {
         return cuartel;
     }
 
-    public static Edificaciones getTipoEdificacion() {
+    @Override
+    public Edificaciones getTipoEdificacion() {
         return tipoEdificacion;
     }
 
@@ -82,13 +89,15 @@ public class Academia implements AbstractFactory {
     }
 
     @Override
-    public void crearRecursos(int a) {
-
+    public ArrayList<Avion> getHangar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void setProduccion(int p) {
-
+    public ArrayList<Tanque> getHangarTanques() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
 }

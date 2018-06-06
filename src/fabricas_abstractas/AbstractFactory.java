@@ -17,7 +17,5 @@ import productos_abstractos.*;
 public interface AbstractFactory {
     Tanque crearTanque(Tanques tipo) throws Exception;
     Avion crearAvion(Aviones tipo) throws Exception;
-    void crearRecursos(int a);
-    void setProduccion(int p);
     Division entrenarSoldados(Divisiones tipo) throws Exception;
 }

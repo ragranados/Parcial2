@@ -10,6 +10,7 @@ package productos_abstractos;
  * @author rau3
  */
 public interface Tanque {
+
     void atacar();
     void destruir();
     

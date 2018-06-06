@@ -5,6 +5,7 @@
  */
 package productos_concretos.Flugzeuge;
 
+import enumeraciones.Aviones;
 import productos_abstractos.Avion;
 
 /**
@@ -16,6 +17,7 @@ public class Stuka implements Avion{
     private int espera,velocidad;
     private int danio, vida;
     private final static int cosMetal=750,cosMoneda=1800;
+    private Aviones tipo = Aviones.Stuka;
 
     public Stuka() {
         this.velocidad=1;

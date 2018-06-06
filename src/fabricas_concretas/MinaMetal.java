@@ -7,18 +7,21 @@ package fabricas_concretas;
 
 import enumeraciones.*;
 import fabricas_abstractas.AbstractFactory;
+import fabricas_abstractas.Recursos;
+import java.util.ArrayList;
 import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
+import fabricas_abstractas.Fabrica;
 
 /**
  *
  * @author rau3
  */
-public class MinaMetal implements AbstractFactory{
+public class MinaMetal implements AbstractFactory,Recursos{
     private int metalRecolectado,produccion;
     private static int costHormigon,costMonedas;
-    private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
+    private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
     public MinaMetal() {
         this.metalRecolectado=0;
@@ -38,7 +41,7 @@ public class MinaMetal implements AbstractFactory{
         return costMonedas;
     }
 
-    public static Edificaciones getTipoEdificacion() {
+    public Edificaciones getTipoEdificacion() {
         return tipoEdificacion;
     }
 
@@ -61,6 +64,8 @@ public class MinaMetal implements AbstractFactory{
     public Division entrenarSoldados(Divisiones tipo) {
         return null;
     }
+
+    
 
     
     

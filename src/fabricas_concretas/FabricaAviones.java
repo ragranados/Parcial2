@@ -18,13 +18,25 @@ import java.util.ArrayList;
 import productos_concretos.Flugzeuge.*;
 import productos_abstractos.Tanque;
 import productos_abstractos.Avion;
+import fabricas_abstractas.Fabrica;import fabricas_abstractas.AbstractFactory;
+
+import java.util.ArrayList;
+import productos_concretos.Flugzeuge.*;
+import productos_abstractos.Tanque;
+import productos_abstractos.Avion;
+import productos_abstractos.Division;import fabricas_abstractas.AbstractFactory;
+
+import java.util.ArrayList;
+import productos_concretos.Flugzeuge.*;
+import productos_abstractos.Tanque;
+import productos_abstractos.Avion;
 
 
 /**
  *
  * @author rau3
  */
-public class FabricaAviones implements AbstractFactory {
+public class FabricaAviones implements AbstractFactory ,Fabrica{
     
     private static int costHormigon=1100,costMonedas=1400;
     private ArrayList<Avion> hangar ;
@@ -77,16 +89,13 @@ public class FabricaAviones implements AbstractFactory {
     public ArrayList<Avion> getHangar() {
         return hangar;
     }
-
+    
     @Override
-    public void crearRecursos(int a) {
-        
+    public int getHangerSize() {
+        return this.hangar.size();
     }
 
-    @Override
-    public void setProduccion(int p) {
-        
-    }
+    
 
    @Override
     public Tanque crearTanque(Tanques tipo) {
@@ -97,5 +106,12 @@ public class FabricaAviones implements AbstractFactory {
     public Division entrenarSoldados(Divisiones tipo) {
         return null;
     }
+
+    @Override
+    public ArrayList<Tanque> getHangarTanques() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

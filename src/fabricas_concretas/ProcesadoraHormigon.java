@@ -10,15 +10,18 @@ import enumeraciones.Divisiones;
 import enumeraciones.Edificaciones;
 import enumeraciones.Tanques;
 import fabricas_abstractas.AbstractFactory;
+import fabricas_abstractas.Recursos;
+import java.util.ArrayList;
 import productos_abstractos.Avion;
 import productos_abstractos.Division;
 import productos_abstractos.Tanque;
+import fabricas_abstractas.Fabrica;
 
 /**
  *
  * @author rau3
  */
-public class ProcesadoraHormigon implements AbstractFactory{
+public class ProcesadoraHormigon implements AbstractFactory,Recursos{
     private int hormigonFabricado,produccion;
     private static int costHormigon,costMonedas;
     private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
@@ -50,7 +53,8 @@ public class ProcesadoraHormigon implements AbstractFactory{
         return costMonedas;
     }
 
-    public static Edificaciones getTipoEdificacion() {
+    @Override
+    public Edificaciones getTipoEdificacion() {
         return tipoEdificacion;
     }
     
@@ -69,4 +73,5 @@ public class ProcesadoraHormigon implements AbstractFactory{
     public Division entrenarSoldados(Divisiones tipo) throws Exception {
         return null;
     }
+
 }

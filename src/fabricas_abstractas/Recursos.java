@@ -5,11 +5,15 @@
  */
 package fabricas_abstractas;
 
+import enumeraciones.Edificaciones;
+
 /**
  *
  * @author rau3
  */
 public interface Recursos {
     void crearRecursos(int a);
+    void setProduccion(int p);
+    Edificaciones getTipoEdificacion();
     
 }

@@ -11,28 +11,39 @@ import productos_abstractos.Avion;
  *
  * @author rau3
  */
-public class Tu95 implements Avion{
-    
+public class AvionB implements Avion{
     private int espera,velocidad;
     private int danio, vida;
-    private static int cosMetal=350,cosMoneda=1000;
+    private String nombre;
+    private final static int cosMetal=500,cosMoneda=1500;
 
-    public Tu95() {
-        this.velocidad=1;
-        this.espera=1;
-        this.danio = 150;
-        this.vida = 280;
+    public AvionB(int espera, int velocidad,int danio,int vida, String nombre) {
+        this.espera = espera;
+        this.velocidad = danio;
+        this.danio = danio;
+        this.vida = vida;
+        this.nombre = nombre;
     }
 
-    public static int getCosMetal() {
-        return cosMetal;
+    public int getEspera() {
+        return espera;
     }
 
-    public static int getCosMoneda() {
-        return cosMoneda;
+    public int getVelocidad() {
+        return velocidad;
     }
-    
-    
+
+    public int getDanio() {
+        return danio;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
 
     @Override
     public void despegar() {
@@ -48,5 +59,9 @@ public class Tu95 implements Avion{
     public void destruir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+
+    
     
 }

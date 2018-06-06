@@ -23,6 +23,15 @@ public class TigerI implements Tanque{
         this.danio = 300;
         this.vida = 600;
     }
+
+    public static int getCosMetal() {
+        return cosMetal;
+    }
+
+    public static int getCosMoneda() {
+        return cosMoneda;
+    }
+    
     
 
     @Override

@@ -119,12 +119,14 @@ public class Menu {
 
     public void jugarTurno() {
         System.out.println("\nTurno de: " + this.bandos.get(atac).getComandante());
+        this.bandos.get(atac).mostrarRecursos();
         int opc;
         boolean turno = true;
         Scanner scanner = new Scanner(System.in);
         while (turno) {
             try {
-                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Terminsr turno");
+                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Terminsr turno\n3. Crear Vehiculo o entrenar milicia"
+                );
                 System.out.print("Ingrese una opcion: ");
                 opc = scanner.nextInt();
                 switch (opc) {
@@ -133,7 +135,11 @@ public class Menu {
                         break;
                     case 2:
                         turno = false;
+                        cambiarTurno();
                         System.err.println("Pasando de turno");
+                        break;
+                    case 3:
+                        this.bandos.get(atac).crearVehiculos();
                         break;
                 }
             } catch (Exception ex) {
@@ -153,9 +159,7 @@ public class Menu {
         elegirBandos();
         while (!hayGanador) {
             jugarTurno();
-            cambiarTurno();
             jugarTurno();
-            cambiarTurno();
             moverFase();
             if (this.fase == 3) {
                 hayGanador = true;

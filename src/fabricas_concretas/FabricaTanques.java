@@ -12,42 +12,45 @@ import productos_concretos.Panzers.*;
 import productos_abstractos.Tanque;
 import productos_abstractos.Avion;
 import productos_abstractos.Division;
+import fabricas_abstractas.Fabrica;
 
 /**
  *
  * @author rau3
  */
-public class FabricaTanques implements AbstractFactory{
+public class FabricaTanques implements AbstractFactory,Fabrica{
     
-    private ArrayList<Tanque> hangarTanques ;
-    private static Edificaciones tipoEdificacion;
+    private ArrayList<Tanque> hangar ;
+    private Edificaciones tipoEdificacion;
     private static int costHormigon=1400,costMonedas=4000;
 
     public FabricaTanques() {
-        this.hangarTanques=new ArrayList();
+        this.hangar=new ArrayList();
         this.tipoEdificacion = Edificaciones.Tanques;
     }
     
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
         Tanque nuevo;
-        if (hangarTanques.size() < 10) {
+        if (hangar.size() < 10) {
             switch (tipo) {
                 case KingTiger:
                     nuevo = new KingTiger();
-                    this.hangarTanques.add(nuevo);
+                    this.hangar.add(nuevo);
+                    System.out.println("Se ha creado un tanque aleman");
                     return nuevo;
                 case TigerI:
                     nuevo = new TigerI();
-                    this.hangarTanques.add(nuevo);
+                    this.hangar.add(nuevo);
                     return nuevo;
                 case Kv1:
                     nuevo = new Kv1();
-                    this.hangarTanques.add(nuevo);
+                    this.hangar.add(nuevo);
                     return nuevo;
                 case T34:
                     nuevo = new T34();
-                    this.hangarTanques.add(nuevo);
+                    this.hangar.add(nuevo);
+                    System.out.println("Se ha creado un tanque sovietico");
                     return nuevo;
             }
         }
@@ -55,10 +58,10 @@ public class FabricaTanques implements AbstractFactory{
     }
 
     public ArrayList<Tanque> getHangarTanques() {
-        return hangarTanques;
+        return hangar;
     }
 
-    public static Edificaciones getTipoEdificacion() {
+    public Edificaciones getTipoEdificacion() {
         return tipoEdificacion;
     }
 
@@ -69,8 +72,11 @@ public class FabricaTanques implements AbstractFactory{
     public static int getCostMonedas() {
         return costMonedas;
     }
-
     
+    @Override
+    public int getHangerSize() {
+        return this.hangar.size();
+    }
     
 
     @Override
@@ -79,18 +85,15 @@ public class FabricaTanques implements AbstractFactory{
     }
 
     @Override
-    public void crearRecursos(int a) {
-        
-    }
-
-    @Override
-    public void setProduccion(int p) {
-        
-    }
-
-    @Override
     public Division entrenarSoldados(Divisiones tipo) {
         return null;
     }
+
+    @Override
+    public ArrayList<Avion> getHangar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
