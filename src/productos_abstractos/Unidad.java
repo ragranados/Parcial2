@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package enumeraciones;
+package productos_abstractos;
 
 /**
  *
  * @author rau3
  */
-public enum Tanques {
-    Sherman,TigerI,T34,KingTiger
+public interface Unidad {
+    int getVida();
+    void setVida(int vida);
+    int getFaseCreacion();
+    int getEspera();
+    Unidad getObjetivo();
 }

@@ -13,5 +13,6 @@ public interface Tanque {
 
     void atacar();
     void destruir();
-    
+    void setObjetivo(Unidad unidad);
+    Unidad getObjetivo();
 }

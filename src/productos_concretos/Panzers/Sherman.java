@@ -12,18 +12,18 @@ import productos_abstractos.Unidad;
  *
  * @author rau3
  */
-public class T34 implements Tanque,Unidad{
+public class Sherman implements Tanque ,Unidad{
     
     private final int espera,velocidad;
     private int danio, vida,faseCreacion;
-    private final static int cosMetal=300,cosMoneda=700;
+    private final static int cosMetal=700,cosMoneda=3000;
     private Unidad objetivo;
 
-    public T34() {
-        this.espera = 1;
-        this.velocidad = 2;
-        this.danio = 300;
-        this.vida = 600;
+    public Sherman() {
+        this.espera=2;
+        this.velocidad=3;
+        this.danio = 500;
+        this.vida = 800;
     }
 
     public int getEspera() {
@@ -48,6 +48,15 @@ public class T34 implements Tanque,Unidad{
     }
     
 
+    public static int getCosMetal() {
+        return cosMetal;
+    }
+
+    public static int getCosMoneda() {
+        return cosMoneda;
+    }
+    
+
     public Unidad getObjetivo() {
         return objetivo;
     }
@@ -65,18 +74,11 @@ public class T34 implements Tanque,Unidad{
         this.vida = vida;
     }
     
-
-    public static int getCosMetal() {
-        return cosMetal;
-    }
-
-    public static int getCosMoneda() {
-        return cosMoneda;
-    }
-
-    @Override
+    
+    
+    
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("atacando");
     }
 
     @Override

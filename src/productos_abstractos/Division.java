@@ -12,5 +12,6 @@ package productos_abstractos;
 public interface Division {
     void atacar();
     void morir();
-    
+    void setObjetivo(Unidad unidad);
+    Unidad getObjetivo();
 }

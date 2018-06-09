@@ -10,5 +10,5 @@ package enumeraciones;
  * @author rau3
  */
 public enum Aviones {
-    Stuka,FlugzeugbauAG,Tu22M,Tu95
+    Stuka,AvionUS,Tu22M,Tu95
 }

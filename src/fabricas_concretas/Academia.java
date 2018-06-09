@@ -18,13 +18,15 @@ import fabricas_abstractas.Fabrica;
  *
  * @author rau3
  */
-public class Academia implements AbstractFactory,Fabrica {
+public class Academia implements AbstractFactory,Fabrica,Unidad {
 
     private ArrayList<Division> cuartel;
     private Edificaciones tipoEdificacion = Edificaciones.Academia;
+    private int vida;
     private static int costHormigon = 1400, costMonedas = 4000;
 
     public Academia() {
+        this.vida=2000;
         this.cuartel = new ArrayList();
     }
     
@@ -35,26 +37,40 @@ public class Academia implements AbstractFactory,Fabrica {
             switch (tipo) {
                 case Infanteria:
                     nuevo = new DivisionInfanteria();
-                    return nuevo;
+                    
+                    
                 case SS:
                     nuevo = new DivisionSS();
-                    return nuevo;
+                    
                 case USMarines:
                     nuevo = new MarinesUS();
-                    return nuevo;
+                    
                 case SoldadosUS:
                     nuevo = new SoldadosUS();
-                    return nuevo;
+                    
                 case ComandantesR:
                     nuevo = new ComandantesRojo();
-                    return nuevo;
+                    
                 case SoldadosR:
                     nuevo = new SoldadosUS();
             }
             this.cuartel.add(nuevo);
-        }
+            System.out.println("Se ha entrenado nueva milicia ");
+            return nuevo;
+        }else{
+            
         throw new Exception("Academia llena");
+        }
     }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
     
     @Override
     public int getHangerSize() {
@@ -95,6 +111,21 @@ public class Academia implements AbstractFactory,Fabrica {
 
     @Override
     public ArrayList<Tanque> getHangarTanques() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getEspera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Unidad getObjetivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

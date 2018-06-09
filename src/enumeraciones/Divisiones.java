@@ -10,6 +10,6 @@ package enumeraciones;
  * @author rau3
  */
 public enum Divisiones {
-    Infanteria,SS,USMarines,SoldadosUS,SoldadosR,ComandantesR
+    Infanteria,SS,USMarines,SoldadosUS,SoldadosR,ComandantesR,Normal,Elite
     
 }

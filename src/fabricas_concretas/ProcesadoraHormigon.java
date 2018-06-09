@@ -16,13 +16,14 @@ import productos_abstractos.Avion;
 import productos_abstractos.Division;
 import productos_abstractos.Tanque;
 import fabricas_abstractas.Fabrica;
+import productos_abstractos.Unidad;
 
 /**
  *
  * @author rau3
  */
-public class ProcesadoraHormigon implements AbstractFactory,Recursos{
-    private int hormigonFabricado,produccion;
+public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
+    private int hormigonFabricado,produccion,vida;
     private static int costHormigon,costMonedas;
     private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
     
@@ -31,6 +32,15 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos{
         this.hormigonFabricado+=produccion;
         
     }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
 
     public int getHormigonFabricado() {
         return hormigonFabricado;
@@ -72,6 +82,21 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos{
     @Override
     public Division entrenarSoldados(Divisiones tipo) throws Exception {
         return null;
+    }
+
+    @Override
+    public int getFaseCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getEspera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Unidad getObjetivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

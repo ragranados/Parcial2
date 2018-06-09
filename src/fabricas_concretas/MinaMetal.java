@@ -13,20 +13,40 @@ import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
 import fabricas_abstractas.Fabrica;
+import productos_abstractos.Unidad;
 
 /**
  *
  * @author rau3
  */
-public class MinaMetal implements AbstractFactory,Recursos{
-    private int metalRecolectado,produccion;
+public class MinaMetal implements AbstractFactory,Recursos,Unidad{
+    
+    private int metalRecolectado,produccion,vida;
     private static int costHormigon,costMonedas;
     private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
     public MinaMetal() {
+        this.vida=2000;
         this.metalRecolectado=0;
         
     }
+
+    public int getMetalRecolectado() {
+        return metalRecolectado;
+    }
+
+    public void setMetalRecolectado(int metalRecolectado) {
+        this.metalRecolectado = metalRecolectado;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
     
     @Override
     public void crearRecursos(int a) {
@@ -63,6 +83,21 @@ public class MinaMetal implements AbstractFactory,Recursos{
     @Override
     public Division entrenarSoldados(Divisiones tipo) {
         return null;
+    }
+
+    @Override
+    public int getFaseCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getEspera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Unidad getObjetivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

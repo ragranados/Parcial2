@@ -21,8 +21,9 @@ import java.util.logging.Logger;
 public class Menu {
 
     private static Menu menu = null;
-    private ArrayList<CentroDeMando> bandos;
-    int fase = 0, atac = 0, defen = 1;
+    private static ArrayList<CentroDeMando> bandos;
+    private int atac = 0, defen = 1;
+    private static int fase = 1;
     private final Scanner scanner = new Scanner(System.in);
 
     private Menu() {
@@ -37,10 +38,16 @@ public class Menu {
         return null;
     }
 
+    public static int getFase() {
+        return fase;
+    }
+    
+    
+
     public void Opciones() {
         int opc;
 
-        System.out.println("\n1. Crear Edificacion\n2. Fabricar Vehiculo\n3. Fabricar Avion");
+        System.out.println("\n1. Crear Edificacion\n2. Fabricar Vehiculo\n3. Fabricar Avion\n4. Atacar");
         opc = scanner.nextInt();
         if (opc == 1) {
 
@@ -52,7 +59,7 @@ public class Menu {
         return menu;
     }
 
-    public ArrayList<CentroDeMando> getBandos() {
+    public static ArrayList<CentroDeMando> getBandos() {
         return bandos;
     }
 
@@ -125,7 +132,10 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         while (turno) {
             try {
-                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Terminsr turno\n3. Crear Vehiculo o entrenar milicia"
+                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Terminar turno\n3. Crear Vehiculo o entrenar milicia"
+                        + "\n4. Atacar"
+                        
+                        
                 );
                 System.out.print("Ingrese una opcion: ");
                 opc = scanner.nextInt();
@@ -139,8 +149,10 @@ public class Menu {
                         System.err.println("Pasando de turno");
                         break;
                     case 3:
-                        this.bandos.get(atac).crearVehiculos();
+                        this.bandos.get(atac).crearUnidad();
                         break;
+                    case 4: 
+                        this.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
                 }
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
@@ -161,13 +173,11 @@ public class Menu {
             jugarTurno();
             jugarTurno();
             moverFase();
-            if (this.fase == 3) {
+            if (this.fase == 8) {
                 hayGanador = true;
 
             }
-
         }
-
     }
-
+    
 }

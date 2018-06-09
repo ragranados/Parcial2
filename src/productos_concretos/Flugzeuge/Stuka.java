@@ -7,17 +7,19 @@ package productos_concretos.Flugzeuge;
 
 import enumeraciones.Aviones;
 import productos_abstractos.Avion;
+import productos_abstractos.Unidad;
 
 /**
  *
  * @author rau3
  */
-public class Stuka implements Avion{
+public class Stuka implements Avion,Unidad{
     
     private int espera,velocidad;
-    private int danio, vida;
+    private int danio, vida,faseCreacion;
     private final static int cosMetal=750,cosMoneda=1800;
     private Aviones tipo = Aviones.Stuka;
+    private Unidad objetivo;
 
     public Stuka() {
         this.velocidad=1;
@@ -25,6 +27,24 @@ public class Stuka implements Avion{
         this.danio=350;
         vida=300;
     }
+
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    public void setFaseCreacion(int faseCreacion) {
+        this.faseCreacion = faseCreacion;
+    }
+    
+
+    public Unidad getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Unidad objetivo) {
+        this.objetivo = objetivo;
+    }
+    
 
     public int getEspera() {
         return espera;

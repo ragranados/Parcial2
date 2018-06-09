@@ -15,7 +15,10 @@ import productos_abstractos.*;
  * @author rau3
  */
 public interface AbstractFactory {
+    Edificaciones getTipoEdificacion();
     Tanque crearTanque(Tanques tipo) throws Exception;
     Avion crearAvion(Aviones tipo) throws Exception;
     Division entrenarSoldados(Divisiones tipo) throws Exception;
+    int getVida();
+    void setVida(int vida);
 }

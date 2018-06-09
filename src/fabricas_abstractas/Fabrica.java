@@ -23,4 +23,5 @@ public interface Fabrica {
     Edificaciones getTipoEdificacion();
     ArrayList<Avion> getHangar();
     ArrayList<Tanque> getHangarTanques();
+    ArrayList<Division> getCuartel();
 }

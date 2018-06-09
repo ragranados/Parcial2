@@ -6,16 +6,18 @@
 package productos_concretos.Panzers;
 
 import productos_abstractos.Tanque;
+import productos_abstractos.Unidad;
 
 /**
  *
  * @author rau3
  */
-public class TigerI implements Tanque{
+public class TigerI implements Tanque,Unidad{
     
     private final int espera,velocidad;
-    private int danio, vida;
+    private int danio, vida,faseCreacion;
     private final static int cosMetal=200,cosMoneda=1000;
+    private Unidad objetivo;
 
     public TigerI() {
         this.espera = 2;
@@ -23,6 +25,46 @@ public class TigerI implements Tanque{
         this.danio = 300;
         this.vida = 600;
     }
+
+    public int getEspera() {
+        return espera;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public int getDanio() {
+        return danio;
+    }
+    
+
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    public void setFaseCreacion(int faseCreacion) {
+        this.faseCreacion = faseCreacion;
+    }
+    
+
+    public Unidad getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Unidad objetivo) {
+        this.objetivo = objetivo;
+    }
+    
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
 
     public static int getCosMetal() {
         return cosMetal;

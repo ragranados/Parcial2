@@ -6,46 +6,48 @@
 package fabricas_concretas;
 
 import enumeraciones.*;;
-import fabricas_abstractas.AbstractFactory;
 
-import java.util.ArrayList;
+
+
 import productos_concretos.Flugzeuge.*;
-import productos_abstractos.Tanque;
-import productos_abstractos.Avion;
+
+import fabricas_abstractas.Fabrica;
+
+
 import productos_abstractos.Division;import fabricas_abstractas.AbstractFactory;
 
 import java.util.ArrayList;
-import productos_concretos.Flugzeuge.*;
-import productos_abstractos.Tanque;
-import productos_abstractos.Avion;
-import fabricas_abstractas.Fabrica;import fabricas_abstractas.AbstractFactory;
 
-import java.util.ArrayList;
-import productos_concretos.Flugzeuge.*;
 import productos_abstractos.Tanque;
 import productos_abstractos.Avion;
-import productos_abstractos.Division;import fabricas_abstractas.AbstractFactory;
-
-import java.util.ArrayList;
-import productos_concretos.Flugzeuge.*;
-import productos_abstractos.Tanque;
-import productos_abstractos.Avion;
+import productos_abstractos.Unidad;
 
 
 /**
  *
  * @author rau3
  */
-public class FabricaAviones implements AbstractFactory ,Fabrica{
+public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
     
+    private int vida;
     private static int costHormigon=1100,costMonedas=1400;
     private ArrayList<Avion> hangar ;
     private Edificaciones tipoEdificacion ;
 
     public FabricaAviones() {
+        this.vida=3000;
         this.hangar= new ArrayList();
         this.tipoEdificacion = Edificaciones.Aviones;
     }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
 
     public static int getCostHormigon() {
         return costHormigon;
@@ -65,16 +67,12 @@ public class FabricaAviones implements AbstractFactory ,Fabrica{
         Avion nuevo;
         if (this.hangar.size() < 10) {
             switch (tipo) {
-                case FlugzeugbauAG:
-                    nuevo = new FlugzeugbauAG();
+                case AvionUS:
+                    nuevo = new AvionUS();
                     this.hangar.add(nuevo);
                     return nuevo;
                 case Stuka:
                     nuevo = new Stuka();
-                    this.hangar.add(nuevo);
-                    return nuevo;
-                case Tu22M:
-                    nuevo = new Tu22M();
                     this.hangar.add(nuevo);
                     return nuevo;
                 case Tu95:
@@ -109,6 +107,26 @@ public class FabricaAviones implements AbstractFactory ,Fabrica{
 
     @Override
     public ArrayList<Tanque> getHangarTanques() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getEspera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Unidad getObjetivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Division> getCuartel() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

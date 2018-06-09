@@ -14,19 +14,31 @@ import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
 import fabricas_abstractas.Fabrica;
+import productos_abstractos.Unidad;
 
 /**
  *
  * @author rau3
  */
-public class CasaDeImpuestosA implements AbstractFactory,Recursos{
-    private int impRecolectados=0,produccion;
+public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
+    private int impRecolectados,produccion;
     private static int costHormigon=1000,costMonedas=5050;
+    private int vida;
     private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
 
     public CasaDeImpuestosA() {
-        
+        this.vida=1500;
+        this.impRecolectados=0;
     }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
     
 
     public static int getCostHormigon() {
@@ -75,6 +87,21 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos{
     @Override
     public Avion crearAvion(Aviones tipo) throws Exception {
         return null;
+    }
+
+    @Override
+    public int getFaseCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getEspera() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Unidad getObjetivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

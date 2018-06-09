@@ -28,6 +28,11 @@ public class CreadorEdificaciones {
                 return new Academia();
             case Impuestos:
                 return new CasaDeImpuestosA();
+            case MinaMetal:
+                return new MinaMetal();
+            case Procesadora:
+                return new ProcesadoraHormigon();
+                
                 
             default:
                 return null;

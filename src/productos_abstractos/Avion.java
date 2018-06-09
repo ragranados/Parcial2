@@ -13,5 +13,7 @@ public interface Avion {
     void despegar();
     void atacar();
     void destruir();
+    void setObjetivo(Unidad unidad);
+    Unidad getObjetivo();
     
 }
