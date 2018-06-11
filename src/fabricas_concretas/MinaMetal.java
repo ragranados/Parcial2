@@ -21,7 +21,7 @@ import productos_abstractos.Unidad;
  */
 public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     
-    private int metalRecolectado,produccion,vida;
+    private int metalRecolectado,produccion,vida,espera,faseCreacion;
     private static int costHormigon,costMonedas;
     private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
@@ -71,6 +71,21 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     }
     
     @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    @Override
+    public int getEspera() {
+        return espera;
+    }
+    
+    @Override
+    public void setFaseCreacion(int a){
+        this.faseCreacion=a;
+    }
+    
+    @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
         return null;
     }
@@ -83,16 +98,6 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     @Override
     public Division entrenarSoldados(Divisiones tipo) {
         return null;
-    }
-
-    @Override
-    public int getFaseCreacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getEspera() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

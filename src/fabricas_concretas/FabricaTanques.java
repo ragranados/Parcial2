@@ -23,7 +23,7 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
     
     private ArrayList<Tanque> hangar ;
     private Edificaciones tipoEdificacion;
-    private int vida;
+    private int vida,faseCreacion, espera;
     private static int costHormigon=1400,costMonedas=4000;
 
     public FabricaTanques() {
@@ -87,6 +87,21 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
         return this.hangar.size();
     }
     
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    @Override
+    public int getEspera() {
+        return espera;
+    }
+    
+    @Override
+    public void setFaseCreacion(int a){
+        this.faseCreacion=a;
+    }
+    
 
     @Override
     public Avion crearAvion(Aviones tipo) {
@@ -102,17 +117,7 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
     public ArrayList<Avion> getHangar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public int getFaseCreacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getEspera() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public Unidad getObjetivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

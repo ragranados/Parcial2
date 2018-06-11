@@ -22,7 +22,7 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
 
     private ArrayList<Division> cuartel;
     private Edificaciones tipoEdificacion = Edificaciones.Academia;
-    private int vida;
+    private int vida,faseCreacion,espera;
     private static int costHormigon = 1400, costMonedas = 4000;
 
     public Academia() {
@@ -95,6 +95,21 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
     }
     
     @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    @Override
+    public int getEspera() {
+        return espera;
+    }
+    
+    @Override
+    public void setFaseCreacion(int a){
+        this.faseCreacion=a;
+    }
+    
+    @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {
         return null;
     }
@@ -114,16 +129,8 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int getFaseCreacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getEspera() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
     @Override
     public Unidad getObjetivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

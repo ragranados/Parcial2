@@ -21,4 +21,5 @@ public interface AbstractFactory {
     Division entrenarSoldados(Divisiones tipo) throws Exception;
     int getVida();
     void setVida(int vida);
+    void setFaseCreacion(int a);
 }

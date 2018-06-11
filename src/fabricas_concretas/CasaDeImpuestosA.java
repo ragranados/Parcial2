@@ -21,7 +21,7 @@ import productos_abstractos.Unidad;
  * @author rau3
  */
 public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
-    private int impRecolectados,produccion;
+    private int impRecolectados,produccion,faseCreacion, espera;
     private static int costHormigon=1000,costMonedas=5050;
     private int vida;
     private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
@@ -73,6 +73,21 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     public void setProduccion(int produccion) {
         this.produccion = produccion;
     }
+    
+    @Override
+    public int getFaseCreacion() {
+        return faseCreacion;
+    }
+
+    @Override
+    public int getEspera() {
+        return espera;
+    }
+    
+    @Override
+    public void setFaseCreacion(int a){
+        this.faseCreacion=a;
+    }
 
     @Override
     public Division entrenarSoldados(Divisiones tipo) {
@@ -89,15 +104,7 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
         return null;
     }
 
-    @Override
-    public int getFaseCreacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getEspera() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public Unidad getObjetivo() {
