@@ -125,7 +125,7 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
 
     @Override
     public Unidad getObjetivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override

@@ -102,7 +102,7 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
 
     @Override
     public Unidad getObjetivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return null;
     }
 
     
