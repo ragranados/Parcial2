@@ -5,6 +5,8 @@
  */
 package productos_abstractos;
 
+import enumeraciones.Edificaciones;
+
 /**
  *
  * @author rau3
@@ -17,4 +19,8 @@ public interface Unidad {
     Unidad getObjetivo();
     void setFaseCreacion(int a);
     void atacar();
+    void setFaseDeEnvio(int a);
+    int getFaseDeEnvio();
+    int getVelocidad();
+    Edificaciones getTipoEdificacion();
 }

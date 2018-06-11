@@ -27,7 +27,7 @@ public class Menu {
     private final Scanner scanner = new Scanner(System.in);
 
     private Menu() {
-        this.bandos = new ArrayList();
+        this.bandos = new ArrayList<CentroDeMando>();
 
     }
 
@@ -176,9 +176,8 @@ public class Menu {
             jugarTurno();
             jugarTurno();
             moverFase();
-            if (this.fase == 8) {
+            if (Menu.fase == 15) {
                 hayGanador = true;
-
             }
         }
     }

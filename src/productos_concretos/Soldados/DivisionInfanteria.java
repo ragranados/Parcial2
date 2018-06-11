@@ -5,6 +5,7 @@
  */
 package productos_concretos.Soldados;
 
+import enumeraciones.Edificaciones;
 import fabricas_abstractas.AbstractFactory;
 import productos_abstractos.Division;
 import productos_abstractos.Unidad;
@@ -17,7 +18,7 @@ public class DivisionInfanteria implements Division,Unidad{
     private final int espera,velocidad;
     private int danio, vida;
     private final static int cosMoneda=500;
-    int faseCreacion;
+    int faseCreacion,faseDeEnvio;
     private Unidad objetivo;
 
     public DivisionInfanteria() {
@@ -73,6 +74,14 @@ public class DivisionInfanteria implements Division,Unidad{
     public void setVida(int vida) {
         this.vida = vida;
     }
+
+    public int getFaseDeEnvio() {
+        return faseDeEnvio;
+    }
+
+    public void setFaseDeEnvio(int faseDeEnvio) {
+        this.faseDeEnvio = faseDeEnvio;
+    }
     
 
     @Override
@@ -84,10 +93,16 @@ public class DivisionInfanteria implements Division,Unidad{
         if(this.objetivo.getVida()<=0){
             this.objetivo=null;
         }
+        System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
     }
 
     @Override
     public void morir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Edificaciones getTipoEdificacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

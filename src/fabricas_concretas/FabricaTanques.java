@@ -39,19 +39,20 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
         Tanque nuevo;
         if (hangar.size() < 10) {
             switch (tipo) {
-                case KingTiger:
+                case Sherman:
                     nuevo = new Sherman();
                     this.hangar.add(nuevo);
-                    System.out.println("Se ha creado un tanque aleman");
+                    System.out.println("\nSe ha creado un tanque de US");
                     return nuevo;
                 case TigerI:
                     nuevo = new TigerI();
                     this.hangar.add(nuevo);
+                    System.out.println("\nSe ha creado un tanque Aleman");
                     return nuevo;
                 case T34:
                     nuevo = new T34();
                     this.hangar.add(nuevo);
-                    System.out.println("Se ha creado un tanque sovietico");
+                    System.out.println("\nSe ha creado un tanque sovietico");
                     return nuevo;
             }
         }
@@ -134,6 +135,21 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
 
     @Override
     public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseDeEnvio(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseDeEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getVelocidad() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

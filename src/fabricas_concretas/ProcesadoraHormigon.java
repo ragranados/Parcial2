@@ -25,7 +25,7 @@ import productos_abstractos.Unidad;
 public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     private int hormigonFabricado,produccion,vida,espera,faseCreacion;
     private static int costHormigon,costMonedas;
-    private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
+    private static Edificaciones tipoEdificacion = Edificaciones.Procesadora;
 
     public ProcesadoraHormigon() {
         this.vida = 2000;
@@ -111,6 +111,21 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
 
     @Override
     public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseDeEnvio(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseDeEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getVelocidad() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

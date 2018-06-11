@@ -71,14 +71,17 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
                 case AvionUS:
                     nuevo = new AvionUS();
                     this.hangar.add(nuevo);
+                    System.out.println("\nSe ha creado un avion de US");
                     return nuevo;
                 case Stuka:
                     nuevo = new Stuka();
                     this.hangar.add(nuevo);
+                    System.out.println("\nSe ha creado un avion aleman");
                     return nuevo;
                 case Tu95:
                     nuevo = new Tu95();
                     this.hangar.add(nuevo);
+                    System.out.println("\nSe ha creado un avion sovieto");
                     return nuevo;
             }
         }
@@ -136,6 +139,21 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
 
     @Override
     public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseDeEnvio(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseDeEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getVelocidad() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -38,22 +38,22 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
             switch (tipo) {
                 case Infanteria:
                     nuevo = new DivisionInfanteria();
-                    
-                    
+                    System.out.println("Se ha creado una division de infanteria alemana");
                 case SS:
                     nuevo = new DivisionSS();
-                    
+                    System.out.println("Se ha creado una division SS");
                 case USMarines:
                     nuevo = new MarinesUS();
-                    
+                    System.out.println("Se ha creado una division de Marines");
                 case SoldadosUS:
                     nuevo = new SoldadosUS();
-                    
+                    System.out.println("Se ha creado una division de soldados");
                 case ComandantesR:
                     nuevo = new ComandantesRojo();
-                    
+                    System.out.println("Se ha creacion una division de comandantes");
                 case SoldadosR:
                     nuevo = new SoldadosUS();
+                    System.out.println("Se ha creado una division de soldados rojos");
             }
             this.cuartel.add(nuevo);
             System.out.println("Se ha entrenado nueva milicia ");
@@ -139,6 +139,21 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
 
     @Override
     public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseDeEnvio(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseDeEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getVelocidad() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

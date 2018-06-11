@@ -37,7 +37,7 @@ import productos_concretos.Soldados.SoldadosUS;
 
 /**
  *
- * @author rau3
+ * @author <00138816@uca.edu.sv>
  */
 public class CentroDeMando implements Unidad{
 
@@ -80,7 +80,6 @@ public class CentroDeMando implements Unidad{
                             nuevaEdif.setFaseCreacion(Menu.getFase());
                             this.hormigon -= FabricaTanques.getCostHormigon();
                             this.moneda -= FabricaTanques.getCostMonedas();
-                            System.out.println("Se ha creado una fabrica de tanques");
                         } else {
                             throw e;
                         }
@@ -369,7 +368,6 @@ public class CentroDeMando implements Unidad{
                         return true;
                 }
                 getVehiculo(tip);
-                System.out.println("Se ha creado un vehiculo");
 
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
@@ -377,7 +375,7 @@ public class CentroDeMando implements Unidad{
         }
         return true;
     }
-    
+
     public boolean getVehiculo(Edificaciones tip) throws Exception {
         Fabrica edif;
         Exception e = new Exception("No hay recursos suficientes");
@@ -386,75 +384,75 @@ public class CentroDeMando implements Unidad{
             edif = (Fabrica) f;
             Unidad unidad = (Unidad) edif;
             if (edif.getHangerSize() < 10) {
-                if(verificarDisponibilidad(unidad)){
-                if (tip == edif.getTipoEdificacion()) {
-                    if (tip == Edificaciones.Tanques) {
-                        if (this.nombre == Razas.Alemania) {
-                            if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearTanque(Tanques.TigerI);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.moneda -= TigerI.getCosMoneda();
-                                this.metal -= TigerI.getCosMetal();
-                                return true;
-                            } else {
-                                throw e;
+                if (verificarDisponibilidad(unidad)) {
+                    if (tip == edif.getTipoEdificacion()) {
+                        if (tip == Edificaciones.Tanques) {
+                            if (this.nombre == Razas.Alemania) {
+                                if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearTanque(Tanques.TigerI);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.moneda -= TigerI.getCosMoneda();
+                                    this.metal -= TigerI.getCosMetal();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
+                            } else if (this.nombre == Razas.UnionSovietica) {
+                                if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearTanque(Tanques.T34);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.moneda -= T34.getCosMoneda();
+                                    this.metal -= T34.getCosMetal();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
+                            } else if (this.nombre == Razas.EstadosUnidos) {
+                                if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearTanque(Tanques.Sherman);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.moneda -= Sherman.getCosMoneda();
+                                    this.metal -= Sherman.getCosMetal();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
                             }
-                        } else if (this.nombre == Razas.UnionSovietica) {
-                            if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearTanque(Tanques.T34);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.moneda -= T34.getCosMoneda();
-                                this.metal -= T34.getCosMetal();
-                                return true;
-                            } else {
-                                throw e;
-                            }
-                        } else if (this.nombre == Razas.EstadosUnidos) {
-                            if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearTanque(Tanques.Sherman);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.moneda -= Sherman.getCosMoneda();
-                                this.metal -= Sherman.getCosMetal();
-                                return true;
-                            } else {
-                                throw e;
+                        }
+                        if (tip == Edificaciones.Aviones) {
+                            if (this.nombre == Razas.Alemania) {
+                                if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearAvion(Aviones.Stuka);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.moneda -= Stuka.getCosMoneda();
+                                    this.metal -= Stuka.getCosMetal();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
+                            } else if (this.nombre == Razas.UnionSovietica) {
+                                if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearAvion(Aviones.Tu95);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.moneda -= Tu95.getCosMoneda();
+                                    this.metal -= Tu95.getCosMetal();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
+                            } else if (this.nombre == Razas.EstadosUnidos) {
+                                if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
+                                    unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
+                                    unidad.setFaseCreacion(Menu.getFase());
+                                    this.metal -= AvionUS.getCosMetal();
+                                    this.moneda -= AvionUS.getCosMoneda();
+                                    return true;
+                                } else {
+                                    throw e;
+                                }
                             }
                         }
                     }
-                    if (tip == Edificaciones.Aviones) {
-                        if (this.nombre == Razas.Alemania) {
-                            if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearAvion(Aviones.Stuka);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.moneda -= Stuka.getCosMoneda();
-                                this.metal -= Stuka.getCosMetal();
-                                return true;
-                            } else {
-                                throw e;
-                            }
-                        } else if (this.nombre == Razas.UnionSovietica) {
-                            if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearAvion(Aviones.Tu95);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.moneda -= Tu95.getCosMoneda();
-                                this.metal -= Tu95.getCosMetal();
-                                return true;
-                            } else {
-                                throw e;
-                            }
-                        } else if (this.nombre == Razas.EstadosUnidos) {
-                            if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
-                                unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
-                                unidad.setFaseCreacion(Menu.getFase());
-                                this.metal -= AvionUS.getCosMetal();
-                                this.moneda -= AvionUS.getCosMoneda();
-                                return true;
-                            } else {
-                                throw e;
-                            }
-                        }
-                    }
-                }
                 }
             }
         }
@@ -468,6 +466,7 @@ public class CentroDeMando implements Unidad{
     }
 
     public boolean iniciarAtaque(CentroDeMando centro2) throws Exception {
+        Unidad uni;
         Edificaciones tip = null;
         Scanner scanner = new Scanner(System.in);
         boolean eleccion = true;
@@ -496,50 +495,62 @@ public class CentroDeMando implements Unidad{
                 }
 
                 for (AbstractFactory f : this.fabricas) {
-                    Fabrica edif = (Fabrica) f;
-                    if (edif.getTipoEdificacion() == tip) {
-                        if (null != tip) switch (tip) {
-                            case Academia:
-                                for (Division d : edif.getCuartel()) {
-                                    if (verificarDisponibilidad((Unidad) d)) {
-                                        
-                                        d.setObjetivo(elegirObjetivo(centro2));
-                                        
-                                        if (d.getObjetivo() == null) {
-                                            System.out.println("No se ha puesto ningun objetivo");
+                    Unidad edificacion = (Unidad) f;
+                    Fabrica edif ;
+                    if (edificacion.getTipoEdificacion() == tip) {
+                        if (null != tip) {
+                            switch (tip) {
+                                case Academia:
+                                    edif = (Fabrica) f;
+                                    for (Division d : edif.getCuartel()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase());
+
+                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
                                         }
-                                        return true;
                                     }
-                                }
-                                throw new Exception("No hay vehiculos disponibles");
-                            case Tanques:
-                                for (Tanque d : edif.getHangarTanques()) {
-                                    if (verificarDisponibilidad((Unidad) d)) {
-                                        
-                                        d.setObjetivo(elegirObjetivo(centro2));
-                                        /*Unidad unidad = (Unidad) d;
+                                    throw new Exception("No hay vehiculos disponibles");
+                                case Tanques:
+                                    edif = (Fabrica) f;
+                                    for (Tanque d : edif.getHangarTanques()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase());
+
+                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            /*Unidad unidad = (Unidad) d;
                                         System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
-                                        if (d.getObjetivo() == null) {
-                                            System.out.println("No se ha puesto ningun objetivo");
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
                                         }
-                                        return true;
                                     }
-                                }
-                                throw new Exception("No hay vehiculos disponibles");
-                            case Aviones:
-                                for (Avion d : edif.getHangar()) {
-                                    if (verificarDisponibilidad((Unidad) d)) {
-                                        
-                                        d.setObjetivo(elegirObjetivo(centro2));
-                                        if (d.getObjetivo() == null) {
-                                            System.out.println("No se ha puesto ningun objetivo");
+                                    throw new Exception("No hay vehiculos disponibles");
+                                case Aviones:
+                                    edif = (Fabrica) f;
+                                    for (Avion d : edif.getHangar()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase());
+
+                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
                                         }
-                                        return true;
                                     }
-                                }
-                                throw new Exception("No hay vehiculos disponibles");
-                            default:
-                                break;
+                                    throw new Exception("No hay vehiculos disponibles");
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
@@ -556,14 +567,15 @@ public class CentroDeMando implements Unidad{
         int opc, cont = 0;
         Scanner scanner = new Scanner(System.in);
         if (!centro.fabricas.isEmpty()) {
+            System.out.println("\nEdificaciones enemigas disponibles para atacar: ");
             for (AbstractFactory f : centro.fabricas) {
                 cont++;
-                System.out.println("\nEdificaciones enemigas disponibles para atacar: ");
+                
                 System.out.println(cont + "." + f.getTipoEdificacion().toString());
 
             }
             opc = scanner.nextInt();
-            return (Unidad) centro.fabricas.get(opc-1);
+            return (Unidad) centro.fabricas.get(opc - 1);
         } else {
             System.out.println("\nPuede atacar el centro de mando, desea hacerlo?\n1. Si\n2. No");
             opc = scanner.nextInt();
@@ -576,10 +588,9 @@ public class CentroDeMando implements Unidad{
         }
         return null;
     }
-    
+
     @Override
     public void atacar() {
-        Unidad uni;
         Fabrica fab;
         Edificaciones tip;
         for (AbstractFactory f : this.fabricas) {
@@ -588,14 +599,18 @@ public class CentroDeMando implements Unidad{
                 fab = (Fabrica) f;
                 for (Division d : fab.getCuartel()) {
                     if (d.getObjetivo() != null) {
-                        d.atacar();
+                        if (puedeAtacar((Unidad) d)) {
+                            d.atacar();
+                        }
                     }
                 }
             } else if (tip == Edificaciones.Tanques) {
                 fab = (Fabrica) f;
                 for (Tanque t : fab.getHangarTanques()) {
                     if (t.getObjetivo() != null) {
-                        t.atacar();
+                        if (puedeAtacar((Unidad) t)) {
+                            t.atacar();
+                        }
                     }
 
                 }
@@ -603,7 +618,9 @@ public class CentroDeMando implements Unidad{
                 fab = (Fabrica) f;
                 for (Avion a : fab.getHangar()) {
                     if (a.getObjetivo() != null) {
-                        a.atacar();
+                        if (puedeAtacar((Unidad) a)) {
+                            a.atacar();
+                        }
                     }
 
                 }
@@ -613,6 +630,11 @@ public class CentroDeMando implements Unidad{
 
     }
     
+    public boolean puedeAtacar(Unidad unidad){
+        int suma;
+        suma = unidad.getFaseDeEnvio()+unidad.getVelocidad();
+        return Menu.getFase()> suma;
+    }
 
     public int getMetal() {
         return metal;
@@ -703,6 +725,26 @@ public class CentroDeMando implements Unidad{
 
     @Override
     public void setFaseCreacion(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseDeEnvio(int a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getFaseDeEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getVelocidad() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Edificaciones getTipoEdificacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

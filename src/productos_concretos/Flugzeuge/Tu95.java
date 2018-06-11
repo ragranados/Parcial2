@@ -5,6 +5,7 @@
  */
 package productos_concretos.Flugzeuge;
 
+import enumeraciones.Edificaciones;
 import productos_abstractos.Avion;
 import productos_abstractos.Unidad;
 
@@ -15,7 +16,7 @@ import productos_abstractos.Unidad;
 public class Tu95 implements Avion,Unidad{
     
     private int espera,velocidad;
-    private int danio, vida,faseCreacion;
+    private int danio, vida,faseCreacion,faseDeEnvio;
     private static int cosMetal=350,cosMoneda=1000;
     private Unidad objetivo;
 
@@ -72,8 +73,15 @@ public class Tu95 implements Avion,Unidad{
     public static int getCosMoneda() {
         return cosMoneda;
     }
-    
-    
+
+    public int getFaseDeEnvio() {
+        return faseDeEnvio;
+    }
+
+    public void setFaseDeEnvio(int faseDeEnvio) {
+        this.faseDeEnvio = faseDeEnvio;
+    }
+       
 
     @Override
     public void despegar() {
@@ -89,10 +97,16 @@ public class Tu95 implements Avion,Unidad{
         if(this.objetivo.getVida()<=0){
             this.objetivo=null;
         }
+        System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
     }
 
     @Override
     public void destruir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Edificaciones getTipoEdificacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

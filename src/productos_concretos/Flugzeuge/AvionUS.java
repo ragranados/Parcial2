@@ -5,6 +5,7 @@
  */
 package productos_concretos.Flugzeuge;
 
+import enumeraciones.Edificaciones;
 import productos_abstractos.Avion;
 import productos_abstractos.Unidad;
 
@@ -15,7 +16,7 @@ import productos_abstractos.Unidad;
 public class AvionUS implements Avion,Unidad{
     
     private int espera,velocidad;
-    private int danio, vida,faseCreacion;
+    private int danio, vida,faseCreacion,faseDeEnvio;
     private final static int cosMetal=500,cosMoneda=1500;
     private Unidad objetivo;
 
@@ -55,7 +56,10 @@ public class AvionUS implements Avion,Unidad{
     public int getVida() {
         return vida;
     }
-    
+
+    public int getVelocidad() {
+        return velocidad;
+    }
 
     public static int getCosMetal() {
         return cosMetal;
@@ -69,6 +73,16 @@ public class AvionUS implements Avion,Unidad{
         this.vida = vida;
     }
 
+    public int getFaseDeEnvio() {
+        return faseDeEnvio;
+    }
+
+    public void setFaseDeEnvio(int faseDeEnvio) {
+        this.faseDeEnvio = faseDeEnvio;
+    }
+    
+    
+
     @Override
     public void atacar() {
         int nuevaVida;
@@ -78,6 +92,7 @@ public class AvionUS implements Avion,Unidad{
         if(this.objetivo.getVida()<=0){
             this.objetivo=null;
         }
+        System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
     }
 
     
@@ -87,6 +102,11 @@ public class AvionUS implements Avion,Unidad{
     }
     @Override
     public void destruir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Edificaciones getTipoEdificacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
