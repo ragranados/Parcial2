@@ -76,7 +76,13 @@ public class T34 implements Tanque,Unidad{
 
     @Override
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int nuevaVida;
+        nuevaVida = this.objetivo.getVida()-this.danio;
+        this.objetivo.setVida(nuevaVida);
+        
+        if(this.objetivo.getVida()<=0){
+            this.objetivo=null;
+        }
     }
 
     @Override

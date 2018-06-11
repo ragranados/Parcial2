@@ -141,17 +141,18 @@ public class Menu {
                 opc = scanner.nextInt();
                 switch (opc) {
                     case 1:
-                        this.bandos.get(atac).crearEdificacion();
+                        Menu.bandos.get(atac).crearEdificacion();
                         break;
                     case 2:
-                        this.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
+                        Menu.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
                         break;
                     case 3:
-                        this.bandos.get(atac).crearUnidad();
+                        Menu.bandos.get(atac).crearUnidad();
                         break;
                     case 4: 
                         turno = false;
                         cambiarTurno();
+                        Menu.bandos.get(atac).atacar();
                         System.err.println("Pasando de turno");
                         break;
                         

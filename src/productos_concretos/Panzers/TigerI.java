@@ -78,7 +78,13 @@ public class TigerI implements Tanque,Unidad{
 
     @Override
     public void atacar() {
-        System.out.println("atacando");
+        int nuevaVida;
+        nuevaVida = this.objetivo.getVida()-this.danio;
+        this.objetivo.setVida(nuevaVida);
+        
+        if(this.objetivo.getVida()<=0){
+            this.objetivo=null;
+        }
     }
 
     @Override

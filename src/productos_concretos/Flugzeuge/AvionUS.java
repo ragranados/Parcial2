@@ -20,7 +20,7 @@ public class AvionUS implements Avion,Unidad{
     private Unidad objetivo;
 
     public AvionUS() {
-        velocidad=1;
+        velocidad=2;
         espera = 1;
         this.danio = 200 ;
         this.vida = 150;
@@ -68,17 +68,23 @@ public class AvionUS implements Avion,Unidad{
     public void setVida(int vida) {
         this.vida = vida;
     }
+
+    @Override
+    public void atacar() {
+        int nuevaVida;
+        nuevaVida = this.objetivo.getVida()-this.danio;
+        this.objetivo.setVida(nuevaVida);
+        
+        if(this.objetivo.getVida()<=0){
+            this.objetivo=null;
+        }
+    }
+
     
     @Override
     public void despegar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void destruir() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -26,6 +26,7 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
     public MinaMetal() {
+        this.espera =1;
         this.vida=2000;
         this.metalRecolectado=0;
         
@@ -103,6 +104,11 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     @Override
     public Unidad getObjetivo() {
        return null;
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

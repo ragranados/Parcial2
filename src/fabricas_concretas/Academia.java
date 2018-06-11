@@ -26,6 +26,7 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
     private static int costHormigon = 1400, costMonedas = 4000;
 
     public Academia() {
+        this.espera = 1;
         this.vida=2000;
         this.cuartel = new ArrayList();
     }
@@ -134,6 +135,11 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
     @Override
     public Unidad getObjetivo() {
         return null;
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

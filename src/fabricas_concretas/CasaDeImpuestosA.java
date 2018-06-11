@@ -27,6 +27,7 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
 
     public CasaDeImpuestosA() {
+        this.espera = 1;
         this.vida=1500;
         this.impRecolectados=0;
     }
@@ -109,6 +110,11 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     @Override
     public Unidad getObjetivo() {
         return null;
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

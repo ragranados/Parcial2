@@ -384,12 +384,14 @@ public class CentroDeMando implements Unidad{
 
         for (AbstractFactory f : this.fabricas) {
             edif = (Fabrica) f;
+            Unidad unidad = (Unidad) edif;
             if (edif.getHangerSize() < 10) {
+                if(verificarDisponibilidad(unidad)){
                 if (tip == edif.getTipoEdificacion()) {
                     if (tip == Edificaciones.Tanques) {
                         if (this.nombre == Razas.Alemania) {
                             if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearTanque(Tanques.TigerI);
+                                unidad = (Unidad) f.crearTanque(Tanques.TigerI);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= TigerI.getCosMoneda();
                                 this.metal -= TigerI.getCosMetal();
@@ -399,7 +401,7 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.UnionSovietica) {
                             if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearTanque(Tanques.T34);
+                                unidad = (Unidad) f.crearTanque(Tanques.T34);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= T34.getCosMoneda();
                                 this.metal -= T34.getCosMetal();
@@ -409,7 +411,7 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.EstadosUnidos) {
                             if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearTanque(Tanques.Sherman);
+                                unidad = (Unidad) f.crearTanque(Tanques.Sherman);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Sherman.getCosMoneda();
                                 this.metal -= Sherman.getCosMetal();
@@ -422,7 +424,7 @@ public class CentroDeMando implements Unidad{
                     if (tip == Edificaciones.Aviones) {
                         if (this.nombre == Razas.Alemania) {
                             if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearAvion(Aviones.Stuka);
+                                unidad = (Unidad) f.crearAvion(Aviones.Stuka);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Stuka.getCosMoneda();
                                 this.metal -= Stuka.getCosMetal();
@@ -432,7 +434,7 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.UnionSovietica) {
                             if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearAvion(Aviones.Tu95);
+                                unidad = (Unidad) f.crearAvion(Aviones.Tu95);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Tu95.getCosMoneda();
                                 this.metal -= Tu95.getCosMetal();
@@ -442,7 +444,7 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.EstadosUnidos) {
                             if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
-                                Unidad unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
+                                unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
                                 unidad.setFaseCreacion(Menu.getFase());
                                 this.metal -= AvionUS.getCosMetal();
                                 this.moneda -= AvionUS.getCosMoneda();
@@ -452,6 +454,7 @@ public class CentroDeMando implements Unidad{
                             }
                         }
                     }
+                }
                 }
             }
         }
@@ -514,8 +517,8 @@ public class CentroDeMando implements Unidad{
                                     if (verificarDisponibilidad((Unidad) d)) {
                                         
                                         d.setObjetivo(elegirObjetivo(centro2));
-                                        Unidad unidad = (Unidad) d;
-                                        System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());
+                                        /*Unidad unidad = (Unidad) d;
+                                        System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
                                         if (d.getObjetivo() == null) {
                                             System.out.println("No se ha puesto ningun objetivo");
                                         }
@@ -573,6 +576,43 @@ public class CentroDeMando implements Unidad{
         }
         return null;
     }
+    
+    @Override
+    public void atacar() {
+        Unidad uni;
+        Fabrica fab;
+        Edificaciones tip;
+        for (AbstractFactory f : this.fabricas) {
+            tip = f.getTipoEdificacion();
+            if (tip == Edificaciones.Academia) {
+                fab = (Fabrica) f;
+                for (Division d : fab.getCuartel()) {
+                    if (d.getObjetivo() != null) {
+                        d.atacar();
+                    }
+                }
+            } else if (tip == Edificaciones.Tanques) {
+                fab = (Fabrica) f;
+                for (Tanque t : fab.getHangarTanques()) {
+                    if (t.getObjetivo() != null) {
+                        t.atacar();
+                    }
+
+                }
+            } else if (tip == Edificaciones.Aviones) {
+                fab = (Fabrica) f;
+                for (Avion a : fab.getHangar()) {
+                    if (a.getObjetivo() != null) {
+                        a.atacar();
+                    }
+
+                }
+            }
+
+        }
+
+    }
+    
 
     public int getMetal() {
         return metal;
@@ -665,5 +705,7 @@ public class CentroDeMando implements Unidad{
     public void setFaseCreacion(int a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }

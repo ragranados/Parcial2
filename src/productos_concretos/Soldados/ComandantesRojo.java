@@ -20,7 +20,7 @@ public class ComandantesRojo implements Division,Unidad{
 
     public ComandantesRojo() {
         this.espera = 1;
-        this.velocidad = 1;
+        this.velocidad = 2;
         this.vida=150;
         this.danio=140;
         
@@ -73,7 +73,13 @@ public class ComandantesRojo implements Division,Unidad{
 
     @Override
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int nuevaVida;
+        nuevaVida = this.objetivo.getVida()-this.danio;
+        this.objetivo.setVida(nuevaVida);
+        
+        if(this.objetivo.getVida()<=0){
+            this.objetivo=null;
+        }
     }
 
     @Override

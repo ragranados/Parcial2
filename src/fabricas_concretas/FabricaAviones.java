@@ -35,6 +35,7 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
     private Edificaciones tipoEdificacion ;
 
     public FabricaAviones() {
+        this.espera = 1;
         this.vida=3000;
         this.hangar= new ArrayList();
         this.tipoEdificacion = Edificaciones.Aviones;
@@ -130,6 +131,11 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
 
     @Override
     public ArrayList<Division> getCuartel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

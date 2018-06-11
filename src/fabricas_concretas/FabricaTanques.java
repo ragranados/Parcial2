@@ -27,6 +27,7 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
     private static int costHormigon=1400,costMonedas=4000;
 
     public FabricaTanques() {
+        this.espera=1;
         this.vida=3000;
         this.hangar=new ArrayList();
         this.tipoEdificacion = Edificaciones.Tanques;
@@ -54,7 +55,10 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
                     return nuevo;
             }
         }
-        throw new Exception("Fabrica llena");
+        else{
+            throw new Exception("Fabrica llena");
+        }
+        return null;
     }
 
     public int getVida() {
@@ -125,6 +129,11 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
 
     @Override
     public ArrayList<Division> getCuartel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

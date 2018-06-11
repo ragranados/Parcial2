@@ -21,7 +21,7 @@ public class Sherman implements Tanque ,Unidad{
 
     public Sherman() {
         this.espera=2;
-        this.velocidad=3;
+        this.velocidad=2;
         this.danio = 500;
         this.vida = 800;
     }
@@ -78,7 +78,13 @@ public class Sherman implements Tanque ,Unidad{
     
     
     public void atacar() {
-        System.out.println("atacando");
+        int nuevaVida;
+        nuevaVida = this.objetivo.getVida()-this.danio;
+        this.objetivo.setVida(nuevaVida);
+        
+        if(this.objetivo.getVida()<=0){
+            this.objetivo=null;
+        }
     }
 
     @Override

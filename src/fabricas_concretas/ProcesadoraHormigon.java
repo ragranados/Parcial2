@@ -26,6 +26,12 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     private int hormigonFabricado,produccion,vida,espera,faseCreacion;
     private static int costHormigon,costMonedas;
     private static Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
+
+    public ProcesadoraHormigon() {
+        this.vida = 2000;
+        this.espera = 1;
+    }
+    
     
     @Override
     public void crearRecursos(int a) {
@@ -101,6 +107,11 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     @Override
     public Unidad getObjetivo() {
         return null;
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
