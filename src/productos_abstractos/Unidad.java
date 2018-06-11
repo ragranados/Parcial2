@@ -15,4 +15,5 @@ public interface Unidad {
     int getFaseCreacion();
     int getEspera();
     Unidad getObjetivo();
+    void setFaseCreacion(int a);
 }

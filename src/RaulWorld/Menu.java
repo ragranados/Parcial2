@@ -132,8 +132,8 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         while (turno) {
             try {
-                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Terminar turno\n3. Crear Vehiculo o entrenar milicia"
-                        + "\n4. Atacar"
+                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
+                        + "\n4. Terminar Turno"
                         
                         
                 );
@@ -144,15 +144,17 @@ public class Menu {
                         this.bandos.get(atac).crearEdificacion();
                         break;
                     case 2:
-                        turno = false;
-                        cambiarTurno();
-                        System.err.println("Pasando de turno");
+                        this.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
                         break;
                     case 3:
                         this.bandos.get(atac).crearUnidad();
                         break;
                     case 4: 
-                        this.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
+                        turno = false;
+                        cambiarTurno();
+                        System.err.println("Pasando de turno");
+                        break;
+                        
                 }
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());

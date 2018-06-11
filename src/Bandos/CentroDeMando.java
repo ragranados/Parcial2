@@ -77,6 +77,7 @@ public class CentroDeMando implements Unidad{
                     case 1:
                         if (FabricaTanques.getCostHormigon() <= this.hormigon && FabricaTanques.getCostMonedas() <= this.moneda) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Tanques);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             this.hormigon -= FabricaTanques.getCostHormigon();
                             this.moneda -= FabricaTanques.getCostMonedas();
                             System.out.println("Se ha creado una fabrica de tanques");
@@ -88,6 +89,7 @@ public class CentroDeMando implements Unidad{
                     case 2:
                         if (FabricaAviones.getCostMonedas() <= this.moneda && FabricaAviones.getCostHormigon() <= this.hormigon) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Aviones);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             this.hormigon -= FabricaAviones.getCostHormigon();
                             this.moneda -= FabricaAviones.getCostMonedas();
 
@@ -98,6 +100,7 @@ public class CentroDeMando implements Unidad{
                     case 3:
                         if (Academia.getCostHormigon() <= this.hormigon && Academia.getCostMonedas() <= this.moneda) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Academia);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             this.hormigon -= Academia.getCostHormigon();
                             this.moneda -= Academia.getCostMonedas();
                         } else {
@@ -107,6 +110,7 @@ public class CentroDeMando implements Unidad{
                     case 4:
                         if (MinaMetal.getCostHormigon() <= this.hormigon && MinaMetal.getCostMonedas() <= this.moneda) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.MinaMetal);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             MinaMetal imp = (MinaMetal) nuevaEdif;
                             switch (this.nombre) {
                                 case Alemania:
@@ -130,6 +134,7 @@ public class CentroDeMando implements Unidad{
                     case 5:
                         if (CasaDeImpuestosA.getCostHormigon() <= this.hormigon && CasaDeImpuestosA.getCostMonedas() <= this.moneda) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Impuestos);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             CasaDeImpuestosA imp = (CasaDeImpuestosA) nuevaEdif;
                             switch (this.nombre) {
                                 case Alemania:
@@ -155,6 +160,7 @@ public class CentroDeMando implements Unidad{
                     case 6:
                         if (ProcesadoraHormigon.getCostHormigon() <= this.hormigon && ProcesadoraHormigon.getCostMonedas() <= this.moneda) {
                             nuevaEdif = CreadorEdificaciones.getFactory(Edificaciones.Procesadora);
+                            nuevaEdif.setFaseCreacion(Menu.getFase());
                             ProcesadoraHormigon imp = (ProcesadoraHormigon) nuevaEdif;
                             switch (this.nombre) {
                                 case Alemania:
@@ -272,7 +278,8 @@ public class CentroDeMando implements Unidad{
                     if (this.nombre == Razas.Alemania) {
                         if (div == Divisiones.Elite) {
                             if (DivisionSS.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.SS);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.SS);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= DivisionSS.getCosMoneda();
                             } else {
                                 throw e;
@@ -280,7 +287,8 @@ public class CentroDeMando implements Unidad{
 
                         } else if (div == Divisiones.Normal) {
                             if (DivisionInfanteria.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.Infanteria);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.Infanteria);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= DivisionInfanteria.getCosMoneda();
 
                             } else {
@@ -292,7 +300,8 @@ public class CentroDeMando implements Unidad{
                     } else if (this.nombre == Razas.EstadosUnidos) {
                         if (div == Divisiones.Elite) {
                             if (MarinesUS.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.USMarines);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.USMarines);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= MarinesUS.getCosMoneda();
                             } else {
                                 throw e;
@@ -300,7 +309,8 @@ public class CentroDeMando implements Unidad{
 
                         } else if (div == Divisiones.Normal) {
                             if (SoldadosUS.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.SoldadosUS);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.SoldadosUS);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= SoldadosUS.getCosMoneda();
                             } else {
                                 throw e;
@@ -311,7 +321,8 @@ public class CentroDeMando implements Unidad{
                     } else if (this.nombre == Razas.UnionSovietica) {
                         if (div == Divisiones.Elite) {
                             if (ComandantesRojo.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.ComandantesR);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.ComandantesR);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= ComandantesRojo.getCosMoneda();
                             } else {
                                 throw e;
@@ -319,7 +330,8 @@ public class CentroDeMando implements Unidad{
 
                         } else if (div == Divisiones.Normal) {
                             if (SoldadoRojo.getCosMoneda() <= this.moneda) {
-                                f.entrenarSoldados(Divisiones.SoldadosR);
+                                Unidad unidad = (Unidad) f.entrenarSoldados(Divisiones.SoldadosR);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= SoldadoRojo.getCosMoneda();
                             } else {
                                 throw e;
@@ -377,7 +389,8 @@ public class CentroDeMando implements Unidad{
                     if (tip == Edificaciones.Tanques) {
                         if (this.nombre == Razas.Alemania) {
                             if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
-                                f.crearTanque(Tanques.TigerI);
+                                Unidad unidad = (Unidad) f.crearTanque(Tanques.TigerI);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= TigerI.getCosMoneda();
                                 this.metal -= TigerI.getCosMetal();
                                 return true;
@@ -386,7 +399,8 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.UnionSovietica) {
                             if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
-                                f.crearTanque(Tanques.T34);
+                                Unidad unidad = (Unidad) f.crearTanque(Tanques.T34);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= T34.getCosMoneda();
                                 this.metal -= T34.getCosMetal();
                                 return true;
@@ -395,7 +409,8 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.EstadosUnidos) {
                             if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
-                                f.crearTanque(Tanques.Sherman);
+                                Unidad unidad = (Unidad) f.crearTanque(Tanques.Sherman);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Sherman.getCosMoneda();
                                 this.metal -= Sherman.getCosMetal();
                                 return true;
@@ -407,7 +422,8 @@ public class CentroDeMando implements Unidad{
                     if (tip == Edificaciones.Aviones) {
                         if (this.nombre == Razas.Alemania) {
                             if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
-                                f.crearAvion(Aviones.Stuka);
+                                Unidad unidad = (Unidad) f.crearAvion(Aviones.Stuka);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Stuka.getCosMoneda();
                                 this.metal -= Stuka.getCosMetal();
                                 return true;
@@ -416,7 +432,8 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.UnionSovietica) {
                             if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
-                                f.crearAvion(Aviones.Tu95);
+                                Unidad unidad = (Unidad) f.crearAvion(Aviones.Tu95);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.moneda -= Tu95.getCosMoneda();
                                 this.metal -= Tu95.getCosMetal();
                                 return true;
@@ -425,7 +442,8 @@ public class CentroDeMando implements Unidad{
                             }
                         } else if (this.nombre == Razas.EstadosUnidos) {
                             if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
-                                f.crearAvion(Aviones.AvionUS);
+                                Unidad unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
+                                unidad.setFaseCreacion(Menu.getFase());
                                 this.metal -= AvionUS.getCosMetal();
                                 this.moneda -= AvionUS.getCosMoneda();
                                 return true;
@@ -496,6 +514,8 @@ public class CentroDeMando implements Unidad{
                                     if (verificarDisponibilidad((Unidad) d)) {
                                         
                                         d.setObjetivo(elegirObjetivo(centro2));
+                                        Unidad unidad = (Unidad) d;
+                                        System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());
                                         if (d.getObjetivo() == null) {
                                             System.out.println("No se ha puesto ningun objetivo");
                                         }
@@ -638,6 +658,11 @@ public class CentroDeMando implements Unidad{
 
     @Override
     public Unidad getObjetivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setFaseCreacion(int a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
