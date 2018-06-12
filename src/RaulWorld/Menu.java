@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import productos_abstractos.Unidad;
 
 /**
  *
@@ -134,7 +135,7 @@ public class Menu {
         while (turno) {
             try {
                 System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
-                        + "\n4. Terminar Turno\n5. Salir"
+                        + "\n4. Recolectar recursos\n5. Terminar turno\n6. Rendirse"
                         
                         
                 );
@@ -150,22 +151,30 @@ public class Menu {
                     case 3:
                         Menu.bandos.get(atac).crearUnidad();
                         break;
-                    case 4: 
+                    case 4:
+                        Menu.bandos.get(atac).recolectarRecursos();
+                        break;
+                    case 5:
                         turno = false;
                         cambiarTurno();
                         Menu.bandos.get(atac).atacar();
                         Menu.bandos.get(atac).producirRecursos();
                         System.err.println("Pasando de turno");
                         break;
-                    case 5:
-                        this.hayGanador=true;
+                    case 6:
+                        this.hayGanador = true;
                         break;
-                        
+
                 }
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
         }
+    }
+    
+    public boolean verificarGanador(){
+        Unidad uni = (Unidad) Menu.bandos.get(atac);
+        return uni.getVida()<=0;
     }
 
     /*public void menuAlemania(){
@@ -173,18 +182,34 @@ public class Menu {
         
         
     }*/
-    public void jugar() {
+    public boolean jugar() {
 
         
         elegirBandos();
         while (!this.hayGanador) {
             jugarTurno();
+            
+            if(verificarGanador()){
+                System.out.println("El ganador es: "+Menu.bandos.get(atac).getComandante());
+                this.hayGanador=true;
+                return true;
+            }
+            
             jugarTurno();
+            
+            if(verificarGanador()){
+                System.out.println("El ganador es: "+Menu.bandos.get(atac).getComandante());
+                this.hayGanador=true;
+                return true;
+            }
+            
             moverFase();
             if (Menu.fase == 20) {
                 this.hayGanador = true;
             }
         }
+        
+        return false;
     }
     
 }

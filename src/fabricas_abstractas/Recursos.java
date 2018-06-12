@@ -16,5 +16,7 @@ public interface Recursos {
     void crearRecursos(CentroDeMando c);
     void setProduccion(int p);
     Edificaciones getTipoEdificacion();
+    int getRecursoRecolectado();
+    void setRecursoRecolectado(int a);
     
 }

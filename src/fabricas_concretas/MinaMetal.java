@@ -33,11 +33,11 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
         
     }
 
-    public int getMetalRecolectado() {
+    public int getRecursoRecolectado() {
         return metalRecolectado;
     }
 
-    public void setMetalRecolectado(int metalRecolectado) {
+    public void setRecursoRecolectado(int metalRecolectado) {
         this.metalRecolectado = metalRecolectado;
     }
 

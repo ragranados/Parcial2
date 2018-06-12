@@ -49,9 +49,15 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     }
     
 
-    public int getHormigonFabricado() {
+    public int getRecursoRecolectado() {
         return hormigonFabricado;
     }
+
+    public void setRecursoRecolectado(int hormigonFabricado) {
+        this.hormigonFabricado = hormigonFabricado;
+    }
+    
+    
 
     public int getProduccion() {
         return produccion;

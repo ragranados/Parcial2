@@ -63,11 +63,12 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
         System.out.println("\nSe han producido "+produccion+" monedas");
     }
 
-    public int getImpRecolectados() {
+    @Override
+    public int getRecursoRecolectado() {
         return impRecolectados;
     }
 
-    public void setImpRecolectados(int impRecolectados) {
+    public void setRecursoRecolectado(int a) {
         this.impRecolectados = impRecolectados;
     }
 

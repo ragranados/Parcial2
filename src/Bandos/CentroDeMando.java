@@ -41,11 +41,12 @@ import productos_concretos.Soldados.SoldadosUS;
  */
 public class CentroDeMando implements Unidad{
 
-    int metal, moneda, hormigon, vida;
+    int metal, moneda, hormigon, vida,nivel;
     int maxMetal, maxMoneda, maxHormigon;
     ArrayList<AbstractFactory> fabricas = new ArrayList();
     String comandante;
     Razas nombre;
+    
 
     public CentroDeMando(String comandante) {
         this.moneda = 10000;
@@ -56,6 +57,7 @@ public class CentroDeMando implements Unidad{
         this.maxHormigon = 10000;
         this.vida = 7000;
         this.comandante = comandante;
+        this.nivel = 0;
     }
 
     public AbstractFactory crearEdificacion() throws Exception {
@@ -337,14 +339,12 @@ public class CentroDeMando implements Unidad{
                             }
                         }
                     }
-                }else{
+                } else {
                     System.err.println("Academias llenas");
                 }
             }
         }
     }
-    
-    
 
     public boolean crearVehiculos() {
         boolean eleccion = true;
@@ -381,74 +381,76 @@ public class CentroDeMando implements Unidad{
         Exception e = new Exception("No hay recursos suficientes");
 
         for (AbstractFactory f : this.fabricas) {
-            edif = (Fabrica) f;
-            Unidad unidad = (Unidad) edif;
-            if (edif.getHangerSize() < 10) {
-                if (verificarDisponibilidad(unidad)) {
-                    if (tip == edif.getTipoEdificacion()) {
-                        if (tip == Edificaciones.Tanques) {
-                            if (this.nombre == Razas.Alemania) {
-                                if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearTanque(Tanques.TigerI);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.moneda -= TigerI.getCosMoneda();
-                                    this.metal -= TigerI.getCosMetal();
-                                    return true;
-                                } else {
-                                    throw e;
-                                }
-                            } else if (this.nombre == Razas.UnionSovietica) {
-                                if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearTanque(Tanques.T34);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.moneda -= T34.getCosMoneda();
-                                    this.metal -= T34.getCosMetal();
-                                    return true;
-                                } else {
-                                    throw e;
-                                }
-                            } else if (this.nombre == Razas.EstadosUnidos) {
-                                if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearTanque(Tanques.Sherman);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.moneda -= Sherman.getCosMoneda();
-                                    this.metal -= Sherman.getCosMetal();
-                                    return true;
-                                } else {
-                                    throw e;
+            Unidad unidad = (Unidad) f;
+            if (unidad.getTipoEdificacion() == Edificaciones.Academia || unidad.getTipoEdificacion() == Edificaciones.Aviones || unidad.getTipoEdificacion() == Edificaciones.Tanques) {
+                edif = (Fabrica) f;
+                if (edif.getHangerSize() < 10) {
+                    if (verificarDisponibilidad(unidad)) {
+                        if (tip == edif.getTipoEdificacion()) {
+                            if (tip == Edificaciones.Tanques) {
+                                if (this.nombre == Razas.Alemania) {
+                                    if (TigerI.getCosMetal() <= this.metal && TigerI.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearTanque(Tanques.TigerI);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.moneda -= TigerI.getCosMoneda();
+                                        this.metal -= TigerI.getCosMetal();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
+                                } else if (this.nombre == Razas.UnionSovietica) {
+                                    if (T34.getCosMetal() <= this.metal && T34.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearTanque(Tanques.T34);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.moneda -= T34.getCosMoneda();
+                                        this.metal -= T34.getCosMetal();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
+                                } else if (this.nombre == Razas.EstadosUnidos) {
+                                    if (Sherman.getCosMetal() <= this.metal && Sherman.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearTanque(Tanques.Sherman);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.moneda -= Sherman.getCosMoneda();
+                                        this.metal -= Sherman.getCosMetal();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
                                 }
                             }
-                        }
-                        if (tip == Edificaciones.Aviones) {
-                            if (this.nombre == Razas.Alemania) {
-                                if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearAvion(Aviones.Stuka);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.moneda -= Stuka.getCosMoneda();
-                                    this.metal -= Stuka.getCosMetal();
-                                    return true;
-                                } else {
-                                    throw e;
-                                }
-                            } else if (this.nombre == Razas.UnionSovietica) {
-                                if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearAvion(Aviones.Tu95);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.moneda -= Tu95.getCosMoneda();
-                                    this.metal -= Tu95.getCosMetal();
-                                    return true;
-                                } else {
-                                    throw e;
-                                }
-                            } else if (this.nombre == Razas.EstadosUnidos) {
-                                if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
-                                    unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
-                                    unidad.setFaseCreacion(Menu.getFase());
-                                    this.metal -= AvionUS.getCosMetal();
-                                    this.moneda -= AvionUS.getCosMoneda();
-                                    return true;
-                                } else {
-                                    throw e;
+                            if (tip == Edificaciones.Aviones) {
+                                if (this.nombre == Razas.Alemania) {
+                                    if (Stuka.getCosMetal() <= this.metal && Stuka.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearAvion(Aviones.Stuka);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.moneda -= Stuka.getCosMoneda();
+                                        this.metal -= Stuka.getCosMetal();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
+                                } else if (this.nombre == Razas.UnionSovietica) {
+                                    if (Tu95.getCosMetal() <= this.metal && Tu95.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearAvion(Aviones.Tu95);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.moneda -= Tu95.getCosMoneda();
+                                        this.metal -= Tu95.getCosMetal();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
+                                } else if (this.nombre == Razas.EstadosUnidos) {
+                                    if (AvionUS.getCosMetal() <= this.metal && AvionUS.getCosMoneda() <= this.moneda) {
+                                        unidad = (Unidad) f.crearAvion(Aviones.AvionUS);
+                                        unidad.setFaseCreacion(Menu.getFase());
+                                        this.metal -= AvionUS.getCosMetal();
+                                        this.moneda -= AvionUS.getCosMoneda();
+                                        return true;
+                                    } else {
+                                        throw e;
+                                    }
                                 }
                             }
                         }
@@ -645,13 +647,67 @@ public class CentroDeMando implements Unidad{
         suma = unidad.getFaseDeEnvio()+unidad.getVelocidad();
         return Menu.getFase()> suma;
     }
+    
+    public void recolectarRecursos(){
+        int nuevoRecurso;
+        Recursos rec;
+        Edificaciones tip;
+        for (AbstractFactory f : this.fabricas) {
+            tip = f.getTipoEdificacion();
+            if (tip == Edificaciones.MinaMetal) {
+                rec = (Recursos) f;
+                nuevoRecurso = this.metal+rec.getRecursoRecolectado();
+                this.setMetal(nuevoRecurso);
+                rec.setRecursoRecolectado(0);
+            }
+            else if(tip == Edificaciones.Procesadora){
+                rec = (Recursos) f;
+                nuevoRecurso = this.hormigon+rec.getRecursoRecolectado();
+                this.setMetal(nuevoRecurso);
+                rec.setRecursoRecolectado(0);
+            }
+
+        }
+    }
+    
+    public int calcularCostoMejora() {
+        double cost;
+        switch (this.nivel) {
+            case 0:
+                cost = (0.25) * ((this.maxHormigon * 1.10) + (this.maxMetal * 1.10) + (this.maxMoneda * 1.10));
+                return (int) cost;
+            case 1:
+                cost = (0.25) * ((this.maxHormigon * 1.30) + (this.maxMetal * 1.30) + (this.maxMoneda * 1.30));
+                return (int) cost;
+            case 2:
+                cost = (0.25) * ((this.maxHormigon * 1.50) + (this.maxMetal * 1.50) + (this.maxMoneda * 1.50));
+                return (int) cost;
+            default:
+                return 0;
+        }
+    }
+    
+    public void mejorarCentro() {
+        if(calcularCostoMejora() ==0){
+            System.out.println("\nSe ha alcanzado el nivel maximo de mejora");
+        }else{
+            
+        }
+        
+    }
 
     public int getMetal() {
         return metal;
     }
 
     public void setMetal(int metal) {
-        this.metal = metal;
+        if (metal>this.maxMetal) {
+            this.metal = this.maxMetal;
+        }
+        else{
+            this.metal = metal;
+        }
+        
     }
 
     public int getHormigon() {
@@ -659,9 +715,16 @@ public class CentroDeMando implements Unidad{
     }
 
     public void setHormigon(int hormigon) {
-        this.hormigon = hormigon;
+        if (hormigon>this.maxHormigon) {
+            this.hormigon = this.maxHormigon;
+        }
+        else{
+            this.hormigon = hormigon;
+        }
+        
     }
-
+    
+    
     public int getVida() {
         return vida;
     }
@@ -691,6 +754,7 @@ public class CentroDeMando implements Unidad{
     }
 
     public void setMaxHormigon(int maxHormigon) {
+        
         this.maxHormigon = maxHormigon;
     }
 
@@ -722,6 +786,16 @@ public class CentroDeMando implements Unidad{
             this.moneda = moneda;
         }
     }
+
+    public int getMaxMoneda() {
+        return maxMoneda;
+    }
+
+    public void setMaxMoneda(int maxMoneda) {
+        this.maxMoneda = maxMoneda;
+    }
+    
+    
 
     @Override
     public int getFaseCreacion() {
