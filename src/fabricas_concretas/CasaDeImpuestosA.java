@@ -5,6 +5,7 @@
  */
 package fabricas_concretas;
 
+import Bandos.CentroDeMando;
 import enumeraciones.*;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_abstractas.Recursos;
@@ -55,8 +56,11 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     }
 
     @Override
-    public void crearRecursos(int a) {
-        this.impRecolectados+=produccion;
+    public void crearRecursos(CentroDeMando c) {
+        int recolectar = c.getMoneda();
+        recolectar += produccion;
+        c.setMoneda(recolectar);
+        System.out.println("\nSe han producido "+produccion+" monedas");
     }
 
     public int getImpRecolectados() {

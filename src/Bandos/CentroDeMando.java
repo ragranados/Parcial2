@@ -52,7 +52,7 @@ public class CentroDeMando implements Unidad{
         this.hormigon = 5000;
         this.metal = 3000;
         this.maxMetal = 6000;
-        this.maxMoneda = 20000;
+        this.maxMoneda = 15000;
         this.maxHormigon = 10000;
         this.vida = 7000;
         this.comandante = comandante;
@@ -175,8 +175,8 @@ public class CentroDeMando implements Unidad{
                                     break;
                             }
 
-                            this.hormigon -= CasaDeImpuestosA.getCostHormigon();
-                            this.moneda -= CasaDeImpuestosA.getCostMonedas();
+                            this.hormigon -= ProcesadoraHormigon.getCostHormigon();
+                            this.moneda -= ProcesadoraHormigon.getCostMonedas();
 
                         } else {
                             throw e;
@@ -540,7 +540,7 @@ public class CentroDeMando implements Unidad{
                                             uni.setFaseDeEnvio(Menu.getFase());
 
                                             d.setObjetivo(elegirObjetivo(centro2));
-                                            
+
                                             if (d.getObjetivo() == null) {
                                                 System.out.println("No se ha puesto ningun objetivo");
                                             }
@@ -570,7 +570,7 @@ public class CentroDeMando implements Unidad{
             System.out.println("\nEdificaciones enemigas disponibles para atacar: ");
             for (AbstractFactory f : centro.fabricas) {
                 cont++;
-                
+
                 System.out.println(cont + "." + f.getTipoEdificacion().toString());
 
             }
@@ -612,7 +612,6 @@ public class CentroDeMando implements Unidad{
                             t.atacar();
                         }
                     }
-
                 }
             } else if (tip == Edificaciones.Aviones) {
                 fab = (Fabrica) f;
@@ -622,12 +621,23 @@ public class CentroDeMando implements Unidad{
                             a.atacar();
                         }
                     }
-
                 }
             }
-
         }
-
+    }
+    
+    public void producirRecursos() {
+        Recursos rec;
+        Edificaciones tip;
+        for (AbstractFactory f : this.fabricas) {
+            tip = f.getTipoEdificacion();
+            if (tip == Edificaciones.Procesadora || tip == Edificaciones.Impuestos || tip == Edificaciones.MinaMetal) {
+                if (verificarDisponibilidad((Unidad) f)) {
+                    rec = (Recursos) f;
+                    rec.crearRecursos(this);
+                }
+            }
+        }
     }
     
     public boolean puedeAtacar(Unidad unidad){
@@ -642,14 +652,6 @@ public class CentroDeMando implements Unidad{
 
     public void setMetal(int metal) {
         this.metal = metal;
-    }
-
-    public int getDolares() {
-        return moneda;
-    }
-
-    public void setDolares(int dolares) {
-        this.moneda = dolares;
     }
 
     public int getHormigon() {
@@ -706,6 +708,19 @@ public class CentroDeMando implements Unidad{
 
     public void setComandante(String comandante) {
         this.comandante = comandante;
+    }
+
+    public int getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(int moneda) {
+        if (moneda>this.maxMoneda) {
+            this.moneda = this.maxMoneda;
+        }
+        else{
+            this.moneda = moneda;
+        }
     }
 
     @Override

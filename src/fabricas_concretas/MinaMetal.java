@@ -5,6 +5,7 @@
  */
 package fabricas_concretas;
 
+import Bandos.CentroDeMando;
 import enumeraciones.*;
 import fabricas_abstractas.AbstractFactory;
 import fabricas_abstractas.Recursos;
@@ -22,7 +23,7 @@ import productos_abstractos.Unidad;
 public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     
     private int metalRecolectado,produccion,vida,espera,faseCreacion;
-    private static int costHormigon,costMonedas;
+    private static int costHormigon=1500,costMonedas=5050;
     private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
     public MinaMetal() {
@@ -50,8 +51,9 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     
     
     @Override
-    public void crearRecursos(int a) {
-        metalRecolectado += produccion;
+    public void crearRecursos(CentroDeMando c) {
+        this.metalRecolectado += this.produccion;
+        System.out.println("\nSe han producido "+this.produccion+" Kg de metal");
     }
 
     public static int getCostHormigon() {

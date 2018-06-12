@@ -5,6 +5,7 @@
  */
 package fabricas_abstractas;
 
+import Bandos.CentroDeMando;
 import enumeraciones.Edificaciones;
 
 /**
@@ -12,7 +13,7 @@ import enumeraciones.Edificaciones;
  * @author rau3
  */
 public interface Recursos {
-    void crearRecursos(int a);
+    void crearRecursos(CentroDeMando c);
     void setProduccion(int p);
     Edificaciones getTipoEdificacion();
     

@@ -25,6 +25,7 @@ public class Menu {
     private int atac = 0, defen = 1;
     private static int fase = 1;
     private final Scanner scanner = new Scanner(System.in);
+    boolean hayGanador = false;
 
     private Menu() {
         this.bandos = new ArrayList<CentroDeMando>();
@@ -133,7 +134,7 @@ public class Menu {
         while (turno) {
             try {
                 System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
-                        + "\n4. Terminar Turno"
+                        + "\n4. Terminar Turno\n5. Salir"
                         
                         
                 );
@@ -153,7 +154,11 @@ public class Menu {
                         turno = false;
                         cambiarTurno();
                         Menu.bandos.get(atac).atacar();
+                        Menu.bandos.get(atac).producirRecursos();
                         System.err.println("Pasando de turno");
+                        break;
+                    case 5:
+                        this.hayGanador=true;
                         break;
                         
                 }
@@ -170,14 +175,14 @@ public class Menu {
     }*/
     public void jugar() {
 
-        boolean hayGanador = false;
+        
         elegirBandos();
-        while (!hayGanador) {
+        while (!this.hayGanador) {
             jugarTurno();
             jugarTurno();
             moverFase();
-            if (Menu.fase == 15) {
-                hayGanador = true;
+            if (Menu.fase == 20) {
+                this.hayGanador = true;
             }
         }
     }

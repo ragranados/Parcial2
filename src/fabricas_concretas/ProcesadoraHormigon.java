@@ -5,6 +5,7 @@
  */
 package fabricas_concretas;
 
+import Bandos.CentroDeMando;
 import enumeraciones.Aviones;
 import enumeraciones.Divisiones;
 import enumeraciones.Edificaciones;
@@ -24,7 +25,7 @@ import productos_abstractos.Unidad;
  */
 public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     private int hormigonFabricado,produccion,vida,espera,faseCreacion;
-    private static int costHormigon,costMonedas;
+    private static int costHormigon = 1600,costMonedas=5050;
     private static Edificaciones tipoEdificacion = Edificaciones.Procesadora;
 
     public ProcesadoraHormigon() {
@@ -34,9 +35,9 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     
     
     @Override
-    public void crearRecursos(int a) {
+    public void crearRecursos(CentroDeMando c) {
         this.hormigonFabricado+=produccion;
-        
+        System.out.println("\nSe han producido "+this.produccion+" Kg de hormigon");
     }
 
     public int getVida() {
@@ -58,7 +59,7 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     
     @Override
     public void setProduccion(int p) {
-        
+        this.produccion = p;
     }
 
     public static int getCostHormigon() {
@@ -111,22 +112,22 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
 
     @Override
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void setFaseDeEnvio(int a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public int getFaseDeEnvio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
     @Override
     public int getVelocidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 0;
     }
 
 }
