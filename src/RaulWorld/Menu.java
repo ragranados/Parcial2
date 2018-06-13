@@ -146,7 +146,7 @@ public class Menu {
                         Menu.bandos.get(atac).crearEdificacion();
                         break;
                     case 2:
-                        Menu.bandos.get(atac).iniciarAtaque(this.bandos.get(defen));
+                        Menu.bandos.get(atac).iniciarAtaque(Menu.bandos.get(defen));
                         break;
                     case 3:
                         Menu.bandos.get(atac).crearUnidad();
@@ -159,9 +159,9 @@ public class Menu {
                         break;
                     case 6:
                         turno = false;
-                        cambiarTurno();
                         Menu.bandos.get(atac).atacar();
                         Menu.bandos.get(atac).producirRecursos();
+                        cambiarTurno();
                         System.err.println("Pasando de turno");
                         break;
                     case 7:

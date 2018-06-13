@@ -668,7 +668,7 @@ public class CentroDeMando implements Unidad{
             }
 
         }
-        mostrarRecursos();
+        //mostrarRecursos();
     }
     
     public int calcularCostoMejora() {
@@ -687,8 +687,8 @@ public class CentroDeMando implements Unidad{
                 return 0;
         }
     }
-    
-    public void realizarMejoraCentro(){
+
+    public void realizarMejoraCentro() {
         switch (this.nivel) {
             case 0:
                 this.maxHormigon = (int) (this.maxHormigon * 1.10);
@@ -708,9 +708,9 @@ public class CentroDeMando implements Unidad{
             default:
                 break;
         }
-        
+
     }
-    
+
     public void mejorarCentro() {
         int cost = calcularCostoMejora();
         if (cost == 0) {
@@ -719,8 +719,7 @@ public class CentroDeMando implements Unidad{
             if (this.moneda >= cost && this.metal >= cost && this.hormigon >= cost) {
                 realizarMejoraCentro();
                 System.out.println("Se ha realizar la mejora del centro de mando");
-            }
-            else{
+            } else {
                 System.out.println("No hay suficientes recursos para realizar la mejora");
             }
         }
@@ -730,31 +729,36 @@ public class CentroDeMando implements Unidad{
         return metal;
     }
 
-    public void setMetal(int metal) {
-        if (metal>this.maxMetal) {
-            this.metal = this.maxMetal;
-        }
-        else{
-            this.metal = metal;
-        }
-        
-    }
-
     public int getHormigon() {
         return hormigon;
     }
 
-    public void setHormigon(int hormigon) {
-        if (hormigon>this.maxHormigon) {
-            this.hormigon = this.maxHormigon;
+    public void setMetal(int metal) {
+        if (metal > this.maxMetal) {
+            this.metal = this.maxMetal;
+        } else {
+            this.metal = metal;
         }
-        else{
+
+    }
+
+    public void setHormigon(int hormigon) {
+        if (hormigon > this.maxHormigon) {
+            this.hormigon = this.maxHormigon;
+        } else {
             this.hormigon = hormigon;
         }
-        
+
     }
-    
-    
+
+    public void setMoneda(int moneda) {
+        if (moneda > this.maxMoneda) {
+            this.moneda = this.maxMoneda;
+        } else {
+            this.moneda = moneda;
+        }
+    }
+
     public int getVida() {
         return vida;
     }
@@ -808,14 +812,7 @@ public class CentroDeMando implements Unidad{
         return moneda;
     }
 
-    public void setMoneda(int moneda) {
-        if (moneda>this.maxMoneda) {
-            this.moneda = this.maxMoneda;
-        }
-        else{
-            this.moneda = moneda;
-        }
-    }
+    
 
     public int getMaxMoneda() {
         return maxMoneda;

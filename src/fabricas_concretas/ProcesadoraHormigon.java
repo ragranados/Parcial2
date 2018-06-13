@@ -36,7 +36,7 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     
     @Override
     public void crearRecursos(CentroDeMando c) {
-        this.hormigonFabricado+=produccion;
+        this.hormigonFabricado+=this.produccion;
         System.out.println("\nSe han producido "+this.produccion+" Kg de hormigon");
     }
 
