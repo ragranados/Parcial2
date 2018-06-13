@@ -23,7 +23,7 @@ import productos_abstractos.Unidad;
 public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     
     private int metalRecolectado,produccion,vida,espera,faseCreacion;
-    private static int costHormigon=1500,costMonedas=5050;
+    private static int costHormigon=1500,costMonedas=5000;
     private Edificaciones tipoEdificacion = Edificaciones.MinaMetal;
 
     public MinaMetal() {

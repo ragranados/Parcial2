@@ -30,7 +30,7 @@ import productos_abstractos.Unidad;
 public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
     
     private int vida,faseCreacion,espera;
-    private static int costHormigon=1100,costMonedas=1400;
+    private static int costHormigon=1100,costMonedas=5000;
     private ArrayList<Avion> hangar ;
     private Edificaciones tipoEdificacion ;
 

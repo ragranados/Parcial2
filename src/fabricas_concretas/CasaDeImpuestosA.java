@@ -23,7 +23,7 @@ import productos_abstractos.Unidad;
  */
 public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     private int impRecolectados,produccion,faseCreacion, espera;
-    private static int costHormigon=1000,costMonedas=5050;
+    private static int costHormigon=1000,costMonedas=5000;
     private int vida;
     private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
 

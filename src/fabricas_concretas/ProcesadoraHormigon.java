@@ -25,7 +25,7 @@ import productos_abstractos.Unidad;
  */
 public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     private int hormigonFabricado,produccion,vida,espera,faseCreacion;
-    private static int costHormigon = 1600,costMonedas=5050;
+    private static int costHormigon = 1600,costMonedas=5000;
     private static Edificaciones tipoEdificacion = Edificaciones.Procesadora;
 
     public ProcesadoraHormigon() {

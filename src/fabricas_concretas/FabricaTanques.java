@@ -24,7 +24,7 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
     private ArrayList<Tanque> hangar ;
     private Edificaciones tipoEdificacion;
     private int vida,faseCreacion, espera;
-    private static int costHormigon=1400,costMonedas=4000;
+    private static int costHormigon=1400,costMonedas=5000;
 
     public FabricaTanques() {
         this.espera=1;

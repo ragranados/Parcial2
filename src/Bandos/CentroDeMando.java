@@ -202,7 +202,7 @@ public class CentroDeMando implements Unidad{
     }
 
     public void mostrarRecursos() {
-        System.out.println("\nMonedas: " + this.moneda + "|" + "Metal: " + this.metal + "|" + "Hormigon: " + this.hormigon);
+        System.out.println("\nMonedas: " + this.moneda + " | " + "Metal: " + this.metal + " | " + "Hormigon: " + this.hormigon);
     }
     
     public boolean crearUnidad(){
@@ -668,6 +668,7 @@ public class CentroDeMando implements Unidad{
             }
 
         }
+        mostrarRecursos();
     }
     
     public int calcularCostoMejora() {
@@ -675,25 +676,54 @@ public class CentroDeMando implements Unidad{
         switch (this.nivel) {
             case 0:
                 cost = (0.25) * ((this.maxHormigon * 1.10) + (this.maxMetal * 1.10) + (this.maxMoneda * 1.10));
-                return (int) cost;
+                return (int) cost/3;
             case 1:
                 cost = (0.25) * ((this.maxHormigon * 1.30) + (this.maxMetal * 1.30) + (this.maxMoneda * 1.30));
-                return (int) cost;
+                return (int) cost/3;
             case 2:
                 cost = (0.25) * ((this.maxHormigon * 1.50) + (this.maxMetal * 1.50) + (this.maxMoneda * 1.50));
-                return (int) cost;
+                return (int) cost/3;
             default:
                 return 0;
         }
     }
     
-    public void mejorarCentro() {
-        if(calcularCostoMejora() ==0){
-            System.out.println("\nSe ha alcanzado el nivel maximo de mejora");
-        }else{
-            
+    public void realizarMejoraCentro(){
+        switch (this.nivel) {
+            case 0:
+                this.maxHormigon = (int) (this.maxHormigon * 1.10);
+                this.maxMetal = (int) (this.maxMetal * 1.10);
+                this.maxMoneda = (int) (this.maxMoneda * 1.10);
+                break;
+            case 1:
+                this.maxHormigon = (int) (this.maxHormigon * 1.30);
+                this.maxMetal = (int) (this.maxMetal * 1.30);
+                this.maxMoneda = (int) (this.maxMoneda * 1.30);
+                break;
+            case 2:
+                this.maxHormigon = (int) (this.maxHormigon * 1.50);
+                this.maxMetal = (int) (this.maxMetal * 1.50);
+                this.maxMoneda = (int) (this.maxMoneda * 1.50);
+                break;
+            default:
+                break;
         }
         
+    }
+    
+    public void mejorarCentro() {
+        int cost = calcularCostoMejora();
+        if (cost == 0) {
+            System.out.println("\nSe ha alcanzado el nivel maximo de mejora");
+        } else {
+            if (this.moneda >= cost && this.metal >= cost && this.hormigon >= cost) {
+                realizarMejoraCentro();
+                System.out.println("Se ha realizar la mejora del centro de mando");
+            }
+            else{
+                System.out.println("No hay suficientes recursos para realizar la mejora");
+            }
+        }
     }
 
     public int getMetal() {
