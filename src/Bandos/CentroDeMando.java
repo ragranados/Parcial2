@@ -186,13 +186,14 @@ public class CentroDeMando implements Unidad{
                         break;
                     case 7:
                         eleccion = false;
+                        return null;
 
                 }
                 if (nuevaEdif == null) {
                     throw new Exception("No hay suficientes recursos");
                 } else {
                     this.fabricas.add(nuevaEdif);
-                    System.out.println("Se ha guardado en el hangar");
+                    System.out.println("Se ha creado una edificacion");
                 }
             } catch (Exception ex) {
                 System.err.println("No hay suficientes recursos");
@@ -663,7 +664,7 @@ public class CentroDeMando implements Unidad{
             else if(tip == Edificaciones.Procesadora){
                 rec = (Recursos) f;
                 nuevoRecurso = this.hormigon+rec.getRecursoRecolectado();
-                this.setMetal(nuevoRecurso);
+                this.setHormigon(nuevoRecurso);
                 rec.setRecursoRecolectado(0);
             }
 

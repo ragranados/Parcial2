@@ -31,6 +31,7 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     public ProcesadoraHormigon() {
         this.vida = 2000;
         this.espera = 1;
+        this.hormigonFabricado = 0;
     }
     
     
