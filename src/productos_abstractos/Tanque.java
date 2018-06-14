@@ -15,4 +15,5 @@ public interface Tanque {
     void destruir();
     void setObjetivo(Unidad unidad);
     Unidad getObjetivo();
+    void setVida(int a);
 }

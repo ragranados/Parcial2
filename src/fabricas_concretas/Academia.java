@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import productos_abstractos.*;
 import productos_concretos.Soldados.*;
 import fabricas_abstractas.Fabrica;
+import java.util.Objects;
 
 
 /**
@@ -109,6 +110,36 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
     public void setFaseCreacion(int a){
         this.faseCreacion=a;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.tipoEdificacion);
+        hash = 89 * hash + this.faseCreacion;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Academia other = (Academia) obj;
+        if (this.faseCreacion != other.faseCreacion) {
+            return false;
+        }
+        if (this.tipoEdificacion != other.tipoEdificacion) {
+            return false;
+        }
+        return true;
+    }
+    
     
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {

@@ -41,11 +41,12 @@ import productos_concretos.Soldados.SoldadosUS;
  */
 public class CentroDeMando implements Unidad{
 
-    int metal, moneda, hormigon, vida,nivel;
-    int maxMetal, maxMoneda, maxHormigon;
-    ArrayList<AbstractFactory> fabricas = new ArrayList();
-    String comandante;
-    Razas nombre;
+    private int metal, moneda, hormigon, vida,nivel;
+    private int maxMetal, maxMoneda, maxHormigon;
+    private ArrayList<AbstractFactory> fabricas = new ArrayList();
+    private ArrayList<Unidad> atacando = new ArrayList();
+    private String comandante;
+    protected Razas nombre;
     
 
     public CentroDeMando(String comandante) {
@@ -467,7 +468,46 @@ public class CentroDeMando implements Unidad{
         verificar = unidad.getEspera() + unidad.getFaseCreacion();
         return (Menu.getFase() > verificar && unidad.getObjetivo() == null);
     }
-
+    
+    public void verificarVidaEdificaciones(){
+        for(AbstractFactory f : this.fabricas){
+            if(f.getVida()<=0){
+                destruirVehiculosEdificacion(f);
+                this.fabricas.remove(f);
+            }
+        }
+    }
+    
+    public void destruirVehiculosEdificacion(AbstractFactory f){
+        Fabrica fab = (Fabrica) f;
+        if(f.getTipoEdificacion() == Edificaciones.Tanques){
+            for(Tanque t : fab.getHangarTanques()){
+                t.setVida(0);
+                fab.getHangarTanques().remove(t);
+            }
+        }else if(f.getTipoEdificacion() == Edificaciones.Aviones){
+            for(Avion a : fab.getHangar()){
+                a.setVida(0);
+                fab.getHangar().remove(a);
+                
+            }
+        }else if(f.getTipoEdificacion() == Edificaciones.Academia){
+            for(Division d: fab.getCuartel()){
+                d.setVida(0);
+                fab.getCuartel().remove(d);
+            }
+            
+        }
+        
+    }
+    
+    /**
+     * Con este metodo se selecciona con que tipo de vehiculo se quiere atacar y 
+     * busca si hay vehiculos disponibles del que se ha escogido y si os ha se llama al metodo elegir objetivo y se selecciona que se dese atacar.
+     * @param centro2
+     * @return 
+     * @throws Exception 
+     */
     public boolean iniciarAtaque(CentroDeMando centro2) throws Exception {
         Unidad uni;
         Edificaciones tip = null;
@@ -509,8 +549,9 @@ public class CentroDeMando implements Unidad{
                                         if (verificarDisponibilidad((Unidad) d)) {
                                             uni = (Unidad) d;
                                             uni.setFaseDeEnvio(Menu.getFase());
+                                            this.atacando.add(uni);
 
-                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            d.setObjetivo(elegirObjetivoAtaque(centro2));
                                             if (d.getObjetivo() == null) {
                                                 System.out.println("No se ha puesto ningun objetivo");
                                             }
@@ -524,8 +565,9 @@ public class CentroDeMando implements Unidad{
                                         if (verificarDisponibilidad((Unidad) d)) {
                                             uni = (Unidad) d;
                                             uni.setFaseDeEnvio(Menu.getFase());
+                                            this.atacando.add(uni);
 
-                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            d.setObjetivo(elegirObjetivoAtaque(centro2));
                                             /*Unidad unidad = (Unidad) d;
                                         System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
                                             if (d.getObjetivo() == null) {
@@ -541,8 +583,9 @@ public class CentroDeMando implements Unidad{
                                         if (verificarDisponibilidad((Unidad) d)) {
                                             uni = (Unidad) d;
                                             uni.setFaseDeEnvio(Menu.getFase());
+                                            this.atacando.add(uni);
 
-                                            d.setObjetivo(elegirObjetivo(centro2));
+                                            d.setObjetivo(elegirObjetivoAtaque(centro2));
 
                                             if (d.getObjetivo() == null) {
                                                 System.out.println("No se ha puesto ningun objetivo");
@@ -565,7 +608,7 @@ public class CentroDeMando implements Unidad{
         return true;
     }
 
-    public Unidad elegirObjetivo(CentroDeMando centro) throws Exception {
+    public Unidad elegirObjetivoAtaque(CentroDeMando centro) throws Exception {
         Unidad uni = null;
         int opc, cont = 0;
         Scanner scanner = new Scanner(System.in);
@@ -591,6 +634,17 @@ public class CentroDeMando implements Unidad{
         }
         return null;
     }
+    
+    public void verificarEstadoDeVehiculosAtacando(){
+        for(Unidad u : this.atacando){
+            if(u.getVida() == 0 || u.getObjetivo() == null){
+                this.atacando.remove(u);
+                
+            }
+        }
+    }
+    
+    
 
     @Override
     public void atacar() {
@@ -725,6 +779,28 @@ public class CentroDeMando implements Unidad{
             }
         }
     }
+    
+    public void defender(CentroDeMando c) {
+        int opc,cont=0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese atacante del cual se desea defender:  ");
+        for(Unidad u : c.atacando){
+            
+            cont++;
+            System.out.println(cont+". Esta unidad se encuentra atacando a una edificacion de tipo: "+u.getObjetivo().getTipoEdificacion());
+        }
+        
+        
+    }
+    
+    /*public Unidad elegirObjetivoDefensa(CentroDeMando c){
+        int opc;
+        Scanner scanner = new Scanner(System.in);
+        for(AbstractFactory f: c.getEdificaciones()){
+            
+        }
+        return null;
+    }*/
 
     public int getMetal() {
         return metal;
@@ -821,6 +897,18 @@ public class CentroDeMando implements Unidad{
 
     public void setMaxMoneda(int maxMoneda) {
         this.maxMoneda = maxMoneda;
+    }
+
+    public Razas getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(Razas nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Unidad> getAtacando() {
+        return atacando;
     }
     
     

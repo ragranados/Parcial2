@@ -19,9 +19,7 @@ public class CreadorEdificaciones {
     public static AbstractFactory getFactory(Edificaciones tipo) throws Exception{
         switch(tipo){
             case Tanques:
-                
                 return new FabricaTanques();
-                
             case Aviones:
                 return new FabricaAviones();
             case Academia:

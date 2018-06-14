@@ -17,6 +17,7 @@ import productos_abstractos.Avion;
 import productos_abstractos.Division;
 import productos_abstractos.Tanque;
 import fabricas_abstractas.Fabrica;
+import java.util.Objects;
 import productos_abstractos.Unidad;
 
 /**
@@ -26,7 +27,7 @@ import productos_abstractos.Unidad;
 public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     private int hormigonFabricado,produccion,vida,espera,faseCreacion;
     private static int costHormigon = 1600,costMonedas=5000;
-    private static Edificaciones tipoEdificacion = Edificaciones.Procesadora;
+    private Edificaciones tipoEdificacion = Edificaciones.Procesadora;
 
     public ProcesadoraHormigon() {
         this.vida = 2000;
@@ -96,6 +97,36 @@ public class ProcesadoraHormigon implements AbstractFactory,Recursos,Unidad{
     public void setFaseCreacion(int a){
         this.faseCreacion=a;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.faseCreacion;
+        hash = 53 * hash + Objects.hashCode(this.tipoEdificacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProcesadoraHormigon other = (ProcesadoraHormigon) obj;
+        if (this.faseCreacion != other.faseCreacion) {
+            return false;
+        }
+        if (this.tipoEdificacion != other.tipoEdificacion) {
+            return false;
+        }
+        return true;
+    }
+    
 
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {

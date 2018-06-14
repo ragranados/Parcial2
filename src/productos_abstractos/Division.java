@@ -14,4 +14,5 @@ public interface Division {
     void morir();
     void setObjetivo(Unidad unidad);
     Unidad getObjetivo();
+    void setVida(int a);
 }

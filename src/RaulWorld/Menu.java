@@ -135,7 +135,7 @@ public class Menu {
             try {
                 Menu.bandos.get(atac).mostrarRecursos();
                 System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
-                        + "\n4. Recolectar recursos\n5. Mejorar centro de mando\n6. Terminar turno\n7. Rendirse"
+                        + "\n4. Recolectar recursos\n5. Mejorar centro de mando\n6. Terminar turno\n7. Rendirse\n8. Probar metodo defender"
                         
                         
                 );
@@ -159,6 +159,8 @@ public class Menu {
                         break;
                     case 6:
                         turno = false;
+                        Menu.bandos.get(atac).verificarVidaEdificaciones();
+                        Menu.bandos.get(atac).verificarEstadoDeVehiculosAtacando();
                         Menu.bandos.get(atac).atacar();
                         Menu.bandos.get(atac).producirRecursos();
                         cambiarTurno();
@@ -166,6 +168,9 @@ public class Menu {
                         break;
                     case 7:
                         this.hayGanador = true;
+                        break;
+                    case 8:
+                        Menu.bandos.get(atac).defender(Menu.bandos.get(defen));
                         break;
 
                 }

@@ -14,6 +14,7 @@ import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
 import fabricas_abstractas.Fabrica;
+import java.util.Objects;
 import productos_abstractos.Unidad;
 
 /**
@@ -87,6 +88,36 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
     public void setFaseCreacion(int a){
         this.faseCreacion=a;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + this.faseCreacion;
+        hash = 43 * hash + Objects.hashCode(this.tipoEdificacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MinaMetal other = (MinaMetal) obj;
+        if (this.faseCreacion != other.faseCreacion) {
+            return false;
+        }
+        if (this.tipoEdificacion != other.tipoEdificacion) {
+            return false;
+        }
+        return true;
+    }
+    
     
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {

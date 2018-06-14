@@ -26,7 +26,7 @@ public class Alemania extends CentroDeMando {
 
     public Alemania(String comandante) {
         super(comandante);
-        this.nombre=Razas.Alemania;
+        this.nombre = Razas.Alemania;
         
     }
 

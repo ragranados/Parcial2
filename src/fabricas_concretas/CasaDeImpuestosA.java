@@ -15,6 +15,7 @@ import productos_abstractos.Avion;
 import productos_abstractos.Tanque;
 import productos_abstractos.Division;
 import fabricas_abstractas.Fabrica;
+import java.util.Objects;
 import productos_abstractos.Unidad;
 
 /**
@@ -25,7 +26,7 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     private int impRecolectados,produccion,faseCreacion, espera;
     private static int costHormigon=1000,costMonedas=5000;
     private int vida;
-    private static Edificaciones tipoEdificacion = Edificaciones.Impuestos;
+    private Edificaciones tipoEdificacion = Edificaciones.Impuestos;
 
     public CasaDeImpuestosA() {
         this.espera = 1;
@@ -40,8 +41,6 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     public void setVida(int vida) {
         this.vida = vida;
     }
-    
-    
 
     public static int getCostHormigon() {
         return costHormigon;
@@ -94,6 +93,36 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
     public void setFaseCreacion(int a){
         this.faseCreacion=a;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.faseCreacion;
+        hash = 79 * hash + Objects.hashCode(this.tipoEdificacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CasaDeImpuestosA other = (CasaDeImpuestosA) obj;
+        if (this.faseCreacion != other.faseCreacion) {
+            return false;
+        }
+        if (this.tipoEdificacion != other.tipoEdificacion) {
+            return false;
+        }
+        return true;
+    }
+    
 
     @Override
     public Division entrenarSoldados(Divisiones tipo) {

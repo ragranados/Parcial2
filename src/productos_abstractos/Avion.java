@@ -15,5 +15,5 @@ public interface Avion {
     void destruir();
     void setObjetivo(Unidad unidad);
     Unidad getObjetivo();
-    
+    void setVida(int a);
 }
