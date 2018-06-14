@@ -17,7 +17,7 @@ public class Sherman implements Tanque ,Unidad{
     
     private final int espera,velocidad;
     private int danio, vida,faseCreacion,faseDeEnvio;
-    private final static int cosMetal=700,cosMoneda=3000;
+    private final static int cosMetal=400,cosMoneda=800;
     private Unidad objetivo;
 
     public Sherman() {
@@ -88,11 +88,12 @@ public class Sherman implements Tanque ,Unidad{
         int nuevaVida;
         nuevaVida = this.objetivo.getVida()-this.danio;
         this.objetivo.setVida(nuevaVida);
+        System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
         
         if(this.objetivo.getVida()<=0){
+            System.out.println("Se ha destruido la edificacion de tipo: "+this.objetivo.getTipoEdificacion());
             this.objetivo=null;
         }
-        System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
     }
 
     @Override

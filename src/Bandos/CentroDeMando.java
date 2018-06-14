@@ -469,10 +469,12 @@ public class CentroDeMando implements Unidad{
         return (Menu.getFase() > verificar && unidad.getObjetivo() == null);
     }
     
-    public void verificarVidaEdificaciones(){
-        for(AbstractFactory f : this.fabricas){
-            if(f.getVida()<=0){
-                destruirVehiculosEdificacion(f);
+    public void verificarVidaEdificaciones() {
+        for (AbstractFactory f : this.fabricas) {
+            if (f.getVida() <= 0) {
+                if (f.getTipoEdificacion() == Edificaciones.Academia || f.getTipoEdificacion() == Edificaciones.Aviones || f.getTipoEdificacion() == Edificaciones.Tanques) {
+                    destruirVehiculosEdificacion(f);
+                }
                 this.fabricas.remove(f);
             }
         }
@@ -780,27 +782,118 @@ public class CentroDeMando implements Unidad{
         }
     }
     
-    public void defender(CentroDeMando c) {
+    public boolean defender(CentroDeMando c) {
+        Unidad uni;
+        Edificaciones tip = null;
+        Scanner scanner = new Scanner(System.in);
+        boolean eleccion = true;
+        int opc;
+        while (eleccion) {
+            try {
+                System.out.println("\nIngrese con que desea defenderse: ");
+                System.out.println("\n1. Tanque\n2. Avion\n3. Milicia\n4. Salir");
+                System.out.print("Opcion: ");
+                opc = scanner.nextInt();
+
+                switch (opc) {
+                    case 1:
+                        tip = Edificaciones.Tanques;
+                        break;
+                    case 2:
+                        tip = Edificaciones.Aviones;
+                        break;
+                    case 3:
+                        tip = Edificaciones.Academia;
+                        break;
+                    case 4:
+                        return true;
+                    default:
+                        break;
+                }
+                
+                for (AbstractFactory f : this.fabricas) {
+                    Unidad edificacion = (Unidad) f;
+                    Fabrica edif ;
+                    if (edificacion.getTipoEdificacion() == tip) {
+                        if (null != tip) {
+                            switch (tip) {
+                                case Academia:
+                                    edif = (Fabrica) f;
+                                    for (Division d : edif.getCuartel()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase()-uni.getEspera());
+                                            d.setObjetivo(elegirObjetivoDefensa(c));
+                                            
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
+                                        }
+                                    }
+                                    throw new Exception("No hay vehiculos disponibles");
+                                case Tanques:
+                                    edif = (Fabrica) f;
+                                    for (Tanque d : edif.getHangarTanques()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase()-uni.getEspera());
+                                            
+                                            d.setObjetivo(elegirObjetivoDefensa(c));
+                                            
+                                            /*Unidad unidad = (Unidad) d;
+                                        System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
+                                        }
+                                    }
+                                    throw new Exception("No hay vehiculos disponibles");
+                                case Aviones:
+                                    edif = (Fabrica) f;
+                                    for (Avion d : edif.getHangar()) {
+                                        if (verificarDisponibilidad((Unidad) d)) {
+                                            uni = (Unidad) d;
+                                            uni.setFaseDeEnvio(Menu.getFase()-uni.getEspera());
+                                            
+                                            d.setObjetivo(elegirObjetivoDefensa(c));
+
+                                            if (d.getObjetivo() == null) {
+                                                System.out.println("No se ha puesto ningun objetivo");
+                                            }
+                                            return true;
+                                        }
+                                    }
+                                    throw new Exception("No hay vehiculos disponibles");
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        return true;
+    }
+    
+    public Unidad elegirObjetivoDefensa(CentroDeMando c){
         int opc,cont=0;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese atacante del cual se desea defender:  ");
+        
         for(Unidad u : c.atacando){
             
             cont++;
             System.out.println(cont+". Esta unidad se encuentra atacando a una edificacion de tipo: "+u.getObjetivo().getTipoEdificacion());
         }
+        System.out.print("Ingrese una unidad a atacar: ");
+        opc = scanner.nextInt();
         
-        
+        return c.atacando.get(opc-1);
     }
-    
-    /*public Unidad elegirObjetivoDefensa(CentroDeMando c){
-        int opc;
-        Scanner scanner = new Scanner(System.in);
-        for(AbstractFactory f: c.getEdificaciones()){
-            
-        }
-        return null;
-    }*/
 
     public int getMetal() {
         return metal;
