@@ -123,6 +123,10 @@ public class CasaDeImpuestosA implements AbstractFactory,Recursos,Unidad{
         return true;
     }
     
+    public String getNombreUnidad(){
+        return this.tipoEdificacion.toString();
+    }
+    
 
     @Override
     public Division entrenarSoldados(Divisiones tipo) {

@@ -140,6 +140,9 @@ public class Academia implements AbstractFactory,Fabrica,Unidad {
         return true;
     }
     
+    public String getNombreUnidad(){
+        return this.tipoEdificacion.toString();
+    }
     
     @Override
     public Tanque crearTanque(Tanques tipo) throws Exception {

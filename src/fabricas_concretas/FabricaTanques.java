@@ -137,6 +137,10 @@ public class FabricaTanques implements AbstractFactory,Fabrica,Unidad{
         return true;
     }
     
+    public String getNombreUnidad(){
+        return "Fabrica "+this.tipoEdificacion.toString();
+    }
+    
 
     @Override
     public Avion crearAvion(Aviones tipo) {

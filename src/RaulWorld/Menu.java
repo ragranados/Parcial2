@@ -134,6 +134,7 @@ public class Menu {
         while (turno) {
             try {
                 Menu.bandos.get(atac).mostrarRecursos();
+                Menu.bandos.get(atac).imprimirActivados();
                 System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
                         + "\n4. Recolectar recursos\n5. Mejorar centro de mando\n6. Terminar turno\n7. Rendirse\n8. Defender"
                         

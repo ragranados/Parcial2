@@ -71,7 +71,7 @@ public class CentroDeMando implements Unidad{
             nuevaEdif = null;
             try {
                 System.out.println("\nIngrese el tipo de edificacion que desea construir: ");
-                System.out.println("\n1.Fabrica de tanques\n2. Fabrica de Aviones\n3. Cuartel\n"
+                System.out.println("\n1. Fabrica de tanques\n2. Fabrica de Aviones\n3. Cuartel\n"
                         + "4. Mina de Metal\n5. Casa de impuestos\n6. Procesadora de Hormigon\n7. Salir");
                 System.out.println("Tipo de edificacion: ");
                 edificacion = scanner.nextInt();
@@ -243,7 +243,7 @@ public class CentroDeMando implements Unidad{
         while (eleccion) {
             mostrarRecursos();
             try {
-                System.out.println("Ingrese tipo de soldados que desea crear: \n1. Division normal\n2. Division Elite\n3. Salir\n");
+                System.out.println("\nIngrese tipo de soldados que desea crear: \n1. Division normal\n2. Division Elite\n3. Salir\n");
                 Scanner scanner = new Scanner(System.in);
                 opc = scanner.nextInt();
                 switch (opc) {
@@ -273,7 +273,7 @@ public class CentroDeMando implements Unidad{
 
     public void getMilicia(Divisiones div) throws Exception {
         Fabrica edif;
-        Exception e = new Exception("No hay suficientes recursos");
+        Exception e = new Exception("\nNo hay suficientes recursos");
         for (AbstractFactory f : this.fabricas) {
             edif = (Fabrica) f;
             if (edif.getTipoEdificacion() == Edificaciones.Academia) {
@@ -380,7 +380,7 @@ public class CentroDeMando implements Unidad{
 
     public boolean getVehiculo(Edificaciones tip) throws Exception {
         Fabrica edif;
-        Exception e = new Exception("No hay recursos suficientes");
+        Exception e = new Exception("\nNo hay recursos suficientes");
 
         for (AbstractFactory f : this.fabricas) {
             Unidad unidad = (Unidad) f;
@@ -460,7 +460,7 @@ public class CentroDeMando implements Unidad{
                 }
             }
         }
-        throw new Exception("No hay fabricas disponibles");
+        throw new Exception("\nNo hay fabricas disponibles");
     }
 
     public boolean verificarDisponibilidad(Unidad unidad) {
@@ -555,12 +555,12 @@ public class CentroDeMando implements Unidad{
 
                                             d.setObjetivo(elegirObjetivoAtaque(centro2));
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 case Tanques:
                                     edif = (Fabrica) f;
                                     for (Tanque d : edif.getHangarTanques()) {
@@ -573,12 +573,12 @@ public class CentroDeMando implements Unidad{
                                             /*Unidad unidad = (Unidad) d;
                                         System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 case Aviones:
                                     edif = (Fabrica) f;
                                     for (Avion d : edif.getHangar()) {
@@ -590,19 +590,19 @@ public class CentroDeMando implements Unidad{
                                             d.setObjetivo(elegirObjetivoAtaque(centro2));
 
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 default:
                                     break;
                             }
                         }
                     }
                 }
-                System.err.println("No hay fabricas disponibles ");
+                System.err.println("\nNo hay fabricas disponibles ");
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
@@ -775,9 +775,9 @@ public class CentroDeMando implements Unidad{
         } else {
             if (this.moneda >= cost && this.metal >= cost && this.hormigon >= cost) {
                 realizarMejoraCentro();
-                System.out.println("Se ha realizar la mejora del centro de mando");
+                System.out.println("\nSe ha realizar la mejora del centro de mando");
             } else {
-                System.out.println("No hay suficientes recursos para realizar la mejora");
+                System.out.println("\nNo hay suficientes recursos para realizar la mejora");
             }
         }
     }
@@ -826,12 +826,12 @@ public class CentroDeMando implements Unidad{
                                             d.setObjetivo(elegirObjetivoDefensa(c));
                                             
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 case Tanques:
                                     edif = (Fabrica) f;
                                     for (Tanque d : edif.getHangarTanques()) {
@@ -844,12 +844,12 @@ public class CentroDeMando implements Unidad{
                                             /*Unidad unidad = (Unidad) d;
                                         System.out.println("Fase de creacion del vehiculo: "+unidad.getFaseCreacion());*/
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 case Aviones:
                                     edif = (Fabrica) f;
                                     for (Avion d : edif.getHangar()) {
@@ -860,12 +860,12 @@ public class CentroDeMando implements Unidad{
                                             d.setObjetivo(elegirObjetivoDefensa(c));
 
                                             if (d.getObjetivo() == null) {
-                                                System.out.println("No se ha puesto ningun objetivo");
+                                                System.out.println("\nNo se ha puesto ningun objetivo");
                                             }
                                             return true;
                                         }
                                     }
-                                    throw new Exception("No hay vehiculos disponibles");
+                                    throw new Exception("\nNo hay vehiculos disponibles");
                                 default:
                                     break;
                             }
@@ -882,17 +882,54 @@ public class CentroDeMando implements Unidad{
     public Unidad elegirObjetivoDefensa(CentroDeMando c){
         int opc,cont=0;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese atacante del cual se desea defender:  ");
+        System.out.println("\nIngrese atacante del cual se desea defender:  ");
         
         for(Unidad u : c.atacando){
             
             cont++;
             System.out.println(cont+". Esta unidad se encuentra atacando a una edificacion de tipo: "+u.getObjetivo().getTipoEdificacion());
         }
-        System.out.print("Ingrese una unidad a atacar: ");
+        System.out.print("\nIngrese una unidad a atacar: ");
         opc = scanner.nextInt();
         
         return c.atacando.get(opc-1);
+    }
+    
+    public void imprimirActivados() {
+        for (AbstractFactory f : this.fabricas) {
+            Unidad uni = (Unidad) f;
+            
+            if ((uni.getFaseCreacion() + uni.getEspera() + 1) == Menu.getFase()) {
+                System.out.println("\nSe ha activado una unidad de tipo: " + uni.getNombreUnidad());
+            }
+
+            if (f.getTipoEdificacion() == Edificaciones.Tanques) {
+                Fabrica fab = (Fabrica) f;
+                for (Tanque t : fab.getHangarTanques()) {
+                    uni = (Unidad) t;
+                    if (uni.getFaseCreacion() + uni.getEspera() + 1 == Menu.getFase()) {
+                        System.out.println("\nSe ha activado una unidad de tipo: " + uni.getNombreUnidad());
+                    }
+                }
+            } else if (f.getTipoEdificacion() == Edificaciones.Aviones) {
+                Fabrica fab = (Fabrica) f;
+                for (Avion a : fab.getHangar()) {
+                    uni = (Unidad) a;
+                    if (uni.getFaseCreacion() + uni.getEspera() + 1 == Menu.getFase()) {
+                        System.out.println("\nSe ha activado una unidad de tipo: " + uni.getNombreUnidad());
+                    }
+                }
+            } else if (f.getTipoEdificacion() == Edificaciones.Academia) {
+                Fabrica fab = (Fabrica) f;
+                for (Division d : fab.getCuartel()) {
+                    uni = (Unidad) d;
+                    if (uni.getFaseCreacion() + uni.getEspera() + 1 == Menu.getFase()) {
+                        System.out.println("\nSe ha activado una unidad de tipo: " + uni.getNombreUnidad());
+                    }
+                }
+            }
+
+        }
     }
 
     public int getMetal() {
@@ -1002,6 +1039,11 @@ public class CentroDeMando implements Unidad{
 
     public ArrayList<Unidad> getAtacando() {
         return atacando;
+    }
+
+    @Override
+    public String getNombreUnidad() {
+        return "Centro de mando";
     }
     
     

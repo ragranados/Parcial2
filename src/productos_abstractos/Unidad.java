@@ -23,4 +23,5 @@ public interface Unidad {
     int getFaseDeEnvio();
     int getVelocidad();
     Edificaciones getTipoEdificacion();
+    String getNombreUnidad();
 }
