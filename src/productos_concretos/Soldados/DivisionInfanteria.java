@@ -92,7 +92,7 @@ public class DivisionInfanteria implements Division,Unidad{
         System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
         
         if(this.objetivo.getVida()<=0){
-            System.out.println("\nSe ha destruido la edificacion de tipo: "+this.objetivo.getTipoEdificacion());
+            System.out.println("\nSe ha destruido la edificacion de tipo: "+this.objetivo.getNombreUnidad());
             this.objetivo=null;
         }
     }

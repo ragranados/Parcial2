@@ -173,7 +173,7 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
 
     @Override
     public ArrayList<Tanque> getHangarTanques() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("avionesNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -183,27 +183,27 @@ public class FabricaAviones implements AbstractFactory ,Fabrica,Unidad{
 
     @Override
     public ArrayList<Division> getCuartel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("avionesNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("avionesNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setFaseDeEnvio(int a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("avionesNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getFaseDeEnvio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("avionesNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getVelocidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("aviones Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

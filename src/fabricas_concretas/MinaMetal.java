@@ -145,22 +145,22 @@ public class MinaMetal implements AbstractFactory,Recursos,Unidad{
 
     @Override
     public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("metal Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setFaseDeEnvio(int a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("metalNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getFaseDeEnvio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("metalNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getVelocidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("metalNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

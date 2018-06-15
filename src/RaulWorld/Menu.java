@@ -212,9 +212,9 @@ public class Menu {
             }
             
             moverFase();
-            if (Menu.fase == 35) {
+            /*if (Menu.fase == 35) {
                 this.hayGanador = true;
-            }
+            }*/
         }
         
         return false;

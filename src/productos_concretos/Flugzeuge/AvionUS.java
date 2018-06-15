@@ -91,7 +91,7 @@ public class AvionUS implements Avion,Unidad{
         System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
         
         if(this.objetivo.getVida()<=0){
-            System.out.println("\nSe ha destruido la edificacion de tipo: "+this.objetivo.getTipoEdificacion());
+            System.out.println("\nSe ha destruido la edificacion de tipo: "+this.objetivo.getNombreUnidad());
             this.objetivo=null;
         }
         
@@ -104,16 +104,16 @@ public class AvionUS implements Avion,Unidad{
     
     @Override
     public void despegar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Avion USNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Avion USNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Edificaciones getTipoEdificacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Avion USNot supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
