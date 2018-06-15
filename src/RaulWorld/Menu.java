@@ -135,8 +135,8 @@ public class Menu {
             try {
                 Menu.bandos.get(atac).mostrarRecursos();
                 Menu.bandos.get(atac).imprimirActivados();
-                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Iniciar Ataque\n3. Crear Vehiculo o entrenar milicia"
-                        + "\n4. Recolectar recursos\n5. Mejorar centro de mando\n6. Terminar turno\n7. Rendirse\n8. Defender"
+                System.out.println("\nAcciones: \n1. Crear una edificacion\n2. Crear Vehiculo o entrenar milicia\n3. Iniciar Ataque"
+                        + "\n4. Defender\n5. Recolectar recursos\n6. Mejorar centro de mando\n7. Terminar turno\n8. Rendirse"
                         
                         
                 );
@@ -147,33 +147,32 @@ public class Menu {
                         Menu.bandos.get(atac).crearEdificacion();
                         break;
                     case 2:
-                        Menu.bandos.get(atac).iniciarAtaque(Menu.bandos.get(defen));
-                        break;
-                    case 3:
                         Menu.bandos.get(atac).crearUnidad();
                         break;
+                    case 3:
+                        Menu.bandos.get(atac).iniciarAtaque(Menu.bandos.get(defen));
+                        break;
                     case 4:
-                        Menu.bandos.get(atac).recolectarRecursos();
+                        Menu.bandos.get(atac).defender(Menu.bandos.get(defen));
                         break;
                     case 5:
-                        Menu.bandos.get(atac).mejorarCentro();
+                        Menu.bandos.get(atac).recolectarRecursos();
                         break;
                     case 6:
+                        Menu.bandos.get(atac).mejorarCentro();
+                        break;
+                    case 7:
                         turno = false;
                         Menu.bandos.get(atac).verificarVidaEdificaciones();
+                        Menu.bandos.get(atac).producirRecursos();
                         Menu.bandos.get(atac).verificarEstadoDeVehiculosAtacando();
                         Menu.bandos.get(atac).atacar();
-                        Menu.bandos.get(atac).producirRecursos();
                         cambiarTurno();
                         System.err.println("Pasando de turno");
                         break;
-                    case 7:
+                    case 8:
                         this.hayGanador = true;
                         break;
-                    case 8:
-                        Menu.bandos.get(atac).defender(Menu.bandos.get(defen));
-                        break;
-
                 }
             } catch (Exception ex) {
                 System.err.println(ex.getMessage());
