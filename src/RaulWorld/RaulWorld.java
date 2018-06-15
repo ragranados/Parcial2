@@ -51,7 +51,7 @@ public class RaulWorld {
         
         Menu menu = Menu.getInstance();
             menu.jugar();
-        System.out.println("Precio Stuka: "+Stuka.getCosMetal());
+        //System.out.println("Precio Stuka: "+Stuka.getCosMetal());
         
     }
     
