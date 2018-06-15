@@ -97,7 +97,7 @@ public class Stuka implements Avion,Unidad{
         System.err.println("\nSe han bajado "+this.danio+"de vida al enemigo\n");
         
         if(this.objetivo.getVida()<=0){
-            System.out.println("\n Se ha destruido la edificacion de tipo: "+this.objetivo.getNombreUnidad());
+            System.out.println("\n Se ha destruido la unidad de tipo: "+this.objetivo.getNombreUnidad());
             this.objetivo=null;
         }
         
